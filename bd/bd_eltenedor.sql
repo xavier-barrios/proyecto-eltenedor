@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- Base de datos: `bd_eltenedor`
 --
 CREATE DATABASE IF NOT EXISTS `bd_eltenedor` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `bd_eltenedor`;
+USE `bd_eltenedor`;   
 
 -- --------------------------------------------------------
 
