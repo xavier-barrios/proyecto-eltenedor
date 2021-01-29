@@ -15,18 +15,19 @@ use App\Http\Controllers\UsuariosController;
 |
 */
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/',[UsuariosController::class, 'login']);
-// Route::get('/', [UsuariosController::class,'index']);
-Route::get('home', [UsuariosController::class,'mostrar']);
-// Route::get('/mostrar',[UsuariosController::class, 'mostrar']);
+///////////////////////////////
+////// UsuariosController /////
+///////////////////////////////
+Route::get('home', [UsuariosController::class, 'home']);
+Route::get('mostrar', [UsuariosController::class, 'mostrar']);
+Route::get('modificar', [UsuariosController::class,'modificar']);
 
 ///////////////////////////////
 //////// LoginRegister ////////
 ///////////////////////////////
 //Ruta default la cual dirige al login
 Route::get('/', [LoginRegister::class, 'login']);
-Route::get('/login', [LoginRegister::class, 'login']);
+// Route::get('/login', [LoginRegister::class, 'login']);
 //Ruta la cual obtiene los datos del login
 Route::get('/recibirlogin', [LoginRegister::class, 'recibirlogin']);
 //Ruta la cual obtiene los datos del login

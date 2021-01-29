@@ -53,7 +53,7 @@ class LoginRegister extends Controller
             // Establecer sesion y redirigir a la pagina mostrar.
             // dd($result);
             session()->put('email_usuario', $request->email);
-            return redirect('mostrar');
+            return redirect('home');
         } else {
             // Redirigir al login
             return redirect('/');
