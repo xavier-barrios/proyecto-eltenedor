@@ -21,13 +21,13 @@
             <tbody>
             @foreach($lista as $restaurante)
                 <tr>
-                    <td>{{$restaurante->foto}}</td>
+                    <td><img src="data:image/PNG;base64,{{$restaurante->foto}}"/></td>
                     <td>{{$restaurante->nombre}}</td>
                     <td>{{$restaurante->calle}}</td>
                     <td>{{$restaurante->tipo_cocina}}</td>
                     <td>{{$restaurante->precio_medio}}</td>
                 </tr>
-                @endforeach   
+            @endforeach   
             </tbody>
         </table>
 
