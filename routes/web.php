@@ -15,11 +15,11 @@ use App\Http\Controllers\UsuariosController;
 |
 */
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/',[UsuariosController::class, 'login']);
-// Route::get('/', [UsuariosController::class,'index']);
+///////////////////////////////
+////// UsuariosController /////
+///////////////////////////////
 Route::get('mostrar', [UsuariosController::class,'mostrar']);
-// Route::get('/mostrar',[UsuariosController::class, 'mostrar']);
+Route::get('modificar', [UsuariosController::class,'modificar']);
 
 ///////////////////////////////
 //////// LoginRegister ////////
