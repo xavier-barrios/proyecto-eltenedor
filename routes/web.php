@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +20,8 @@ use App\Http\Controllers\HomeController;
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/mostrar',[HomeController::class, 'mostrar']);
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/',[UsuariosController::class, 'login']);
+// Route::get('/', [UsuariosController::class,'index']);
+Route::get('/mostrar', [UsuariosController::class,'mostrar']);
+// Route::get('/mostrar',[UsuariosController::class, 'mostrar']);
