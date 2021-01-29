@@ -23,7 +23,6 @@ function mostrar() {
     var restaurantes = document.getElementById('restaurantes');
     var ajax = new objetoAjax();
     var token = document.getElementById('token').getAttribute('content');
-    var ajax = new objetoAjax();
     // Busca la ruta read y que sea asyncrono
     ajax.open('GET', 'mostrar', true);
     var datasend = new FormData();
@@ -31,19 +30,22 @@ function mostrar() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
-            alert(respuesta);
             var tabla = '';
             tabla += '<table>';
             tabla += '<tr>';
+            tabla += '<th>Foto</th>';
             tabla += '<th>Nombre</th>';
             tabla += '<th>Calle</th>';
             tabla += '<th>Tipo de cocina</th>';
+            tabla += '<th>Precio medio</th>';
             tabla += '</tr>';
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += '<tr>'
+                tabla += '<td><img src="data:image/png;base64,' + respuesta[i].foto + '" alt="error"></td>';
                 tabla += '<td>' + respuesta[i].nombre + '</td>'
                 tabla += '<td>' + respuesta[i].calle + '</td>'
                 tabla += '<td>' + respuesta[i].tipo_cocina + '</td>'
+                tabla += '<td>' + respuesta[i].precio_medio + '</td>'
                 tabla += '</tr>'
             }
             tabla += '</table>'

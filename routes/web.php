@@ -18,7 +18,8 @@ use App\Http\Controllers\UsuariosController;
 ///////////////////////////////
 ////// UsuariosController /////
 ///////////////////////////////
-Route::get('mostrar', [UsuariosController::class,'mostrar']);
+Route::get('home', [UsuariosController::class, 'home']);
+Route::get('mostrar', [UsuariosController::class, 'mostrar']);
 Route::get('modificar', [UsuariosController::class,'modificar']);
 
 ///////////////////////////////
@@ -26,7 +27,7 @@ Route::get('modificar', [UsuariosController::class,'modificar']);
 ///////////////////////////////
 //Ruta default la cual dirige al login
 Route::get('/', [LoginRegister::class, 'login']);
-Route::get('/login', [LoginRegister::class, 'login']);
+// Route::get('/login', [LoginRegister::class, 'login']);
 //Ruta la cual obtiene los datos del login
 Route::get('/recibirlogin', [LoginRegister::class, 'recibirlogin']);
 //Ruta la cual obtiene los datos del login

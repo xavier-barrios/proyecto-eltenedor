@@ -10,7 +10,7 @@
     {{-- JS --}}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="./js/mostrar.js"></script>
-    <script src="js/ajax.js"></script>
+    <script src="./js/ajax.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Restaurantes</title>
 </head>
@@ -28,28 +28,10 @@
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
     </div> 
-    <table>
-        <thead>
-            <tr>
-                <th>Foto</th>
-                <th>Nombre</th>
-                <th>Calle </th>
-                <th>Tipo de cocina</th>
-                <th>Precio medio</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($lista as $restaurante)
-            <tr>
-                <td><img src="data:image/PNG;base64,{{$restaurante->foto}}"/></td>
-                <td>{{$restaurante->nombre}}</td>
-                <td>{{$restaurante->calle}}</td>
-                <td>{{$restaurante->tipo_cocina}}</td>
-                <td>{{$restaurante->precio_medio}}</td>
-            </tr>
-        @endforeach   
-        </tbody>
-    </table>
+
+    <div id="restaurantes">
+
+    </div>
 
 </body>
 </html>
