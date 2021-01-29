@@ -1,5 +1,5 @@
 window.onload = function() {
-    read();
+    mostrar();
 }
 
 function objetoAjax() {
@@ -18,9 +18,8 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
-
-function read() {
-    var section = document.getElementById('restaurantes');
+function mostrar() {
+    var restaurantes = document.getElementById('restaurantes');
     var ajax = new objetoAjax();
     var token = document.getElementById('token').getAttribute('content');
     // Busca la ruta read y que sea asyncrono
@@ -30,6 +29,7 @@ function read() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
+            alert(respuesta);
             var tabla = '';
             tabla += '<table>';
                 tabla += '<tr>';
@@ -46,7 +46,7 @@ function read() {
             }
                 tabla += '</table>'  
         }
-        section.innerHTML = tabla;
+        restaurantes.innerHTML = tabla;
     }
     ajax.send(datasend);
 }
