@@ -15,35 +15,6 @@
     <title>Restaurantes</title>
 </head>
 <body>
-<<<<<<< HEAD
-    <select name="select">
-        @foreach($lista as $restaurante)
-            <option value="{{$restaurante->tipo_cocina}}">{{$restaurante->tipo_cocina}}</option>
-        @endforeach  
-      </select>
-<table>
-            <thead>
-                <tr>
-                    <th>Foto</th>
-                    <th>Nombre</th>
-                    <th>Calle </th>
-                    <th>Tipo de cocina</th>
-                    <th>Precio medio</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($lista as $restaurante)
-                <tr>
-                    <td><img src="data:image/PNG;base64,{{$restaurante->foto}}"/></td>
-                    <td>{{$restaurante->nombre}}</td>
-                    <td>{{$restaurante->calle}}</td>
-                    <td>{{$restaurante->tipo_cocina}}</td>
-                    <td>{{$restaurante->precio_medio}}</td>
-                </tr>
-            @endforeach   
-            </tbody>
-        </table>
-=======
     <div class="d-flex py-3">
         <form class="px-5 mr-auto" method='get' action="{{url('/crear')}}">
             <button class="btn btn btn-success" type='submit'><i class="fas fa-user-plus"></i></button>
@@ -79,7 +50,6 @@
         @endforeach   
         </tbody>
     </table>
->>>>>>> c6a038570d1dfb70d75547b8c4e028fea6e99400
 
 </body>
 </html>
