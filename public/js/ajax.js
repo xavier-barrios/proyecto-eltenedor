@@ -38,6 +38,8 @@ function mostrar() {
             tabla += '<th>Calle</th>';
             tabla += '<th>Tipo de cocina</th>';
             tabla += '<th>Precio medio</th>';
+            tabla += '<th>Modificar</th>';
+            tabla += '<th>Eliminar medio</th>';
             tabla += '</tr>';
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += '<tr>'
@@ -46,6 +48,8 @@ function mostrar() {
                 tabla += '<td>' + respuesta[i].calle + '</td>'
                 tabla += '<td>' + respuesta[i].tipo_cocina + '</td>'
                 tabla += '<td>' + respuesta[i].precio_medio + '</td>'
+                tabla += '<td> <button class="btn btn-primary" onclick="openmodal(&#039;' + respuesta[i].id + '&#039;,&#039;' + respuesta[i].resultado + ')">Actualizar</button></td>';
+                tabla += '<td> <button class="btn btn-danger" onclick="eliminar(' + respuesta[i].id + ')" type="sumbit">Borrar</button></td>';
                 tabla += '</tr>'
             }
             tabla += '</table>'
