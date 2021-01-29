@@ -13,6 +13,7 @@
     <title>Actualizar restaurante | El tenedor</title>
 </head>
 <body>
+    {{-- NAV --}}
     <div class="d-flex py-3">
         <form class="px-5 mr-auto" method='get' action="{{url('/crear')}}">
             <button class="btn btn btn-success" type='submit'><i class="fas fa-user-plus"></i></button>
@@ -26,6 +27,7 @@
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
     </div> 
+    {{-- CUERPO --}}
     <div class="p-5">
         @if ($errors->any())
         <div class="alert-danger alert-dismissible errors" role="alert">
@@ -36,36 +38,24 @@
                 </ul>
             </div>
         @endif
-        <form  action="{{url('/modificar/'.$empleado->id)}}" method="POST" enctype="multipart/form-data">
+        <form  action="{{url('/modificar/'.$usuarios->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             {{method_field('PUT')}}
             <div class="form-group">
                 <label>Nombre</label><br>
-                <input type="text" class="form-control" name="nombre" value="{{$empleado->nombre}}" required>
-            </div>
-            <div class="form-group">
-                <label>Primer apellido</label><br>
-                <input type="text" class="form-control" name="apellidoP" value="{{$empleado->apellidoP}}" required>    
-            </div>
-            <div class="form-group">
-                <label>Segundo apellido</label><br>
-                <input type="text" class="form-control" name="apellidoM" value="{{$empleado->apellidoM}}" required>    
-            </div>
-            <div class="form-group">
-                <label>Fecha contrato</label><br>
-                <input type="date" class="form-control" name="fechaContrato" value="{{$empleado->fechaContrato}}" required>    
-            </div>
-            <div class="form-group">
-                <label>Sueldo</label><br>
-                <input type="number" class="form-control" name="sueldo" value="{{$empleado->sueldo}}" required>    
-            </div>
-            <div class="form-group">
-                <label>Complementos</label><br>
-                <input type="text" class="form-control" name="complementos" value="{{$empleado->complementos}}" required>
+                <input type="text" class="form-control" name="nombre" value="{{$usuarios->nombre}}" required>
             </div>
             <div class="form-group">
                 <label>Correo</label><br>
-                <input type="email" class="form-control" name="email" value="{{$empleado->email}}" required>
+                <input type="email" class="form-control" name="correo" value="{{$usuarios->correo}}" required>    
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label><br>
+                <input type="password" class="form-control" name="contra" value="{{$usuarios->contra}}" required>    
+            </div>
+            <div class="form-group">
+                <label>Rol</label><br>
+                <input type="date" class="form-control" name="rol" value="{{$usuarios->rol}}" required>    
             </div>
             <div class="form-group">
                 <input type="submit" class="form-control btn-success" name="Enviar" value="Enviar">

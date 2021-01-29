@@ -8,7 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class UsuariosController extends Controller
 {
+
     public function home(){
+        // En el caso de que no se haya inicializado la sesión te redirige al login
+        if(!(session()->has('email_usuario'))) {
+            return redirect('/');
+        }
+        
         return view('home');
     }
 
