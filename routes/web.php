@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginRegister;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
 
@@ -14,14 +15,20 @@ use App\Http\Controllers\UsuariosController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Auth::routes();
-
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/',[UsuariosController::class, 'login']);
 // Route::get('/', [UsuariosController::class,'index']);
 Route::get('mostrar', [UsuariosController::class,'mostrar']);
 // Route::get('/mostrar',[UsuariosController::class, 'mostrar']);
+
+///////////////////////////////
+//////// LoginRegister ////////
+///////////////////////////////
+//Ruta default la cual dirige al login
+Route::get('/', [LoginRegister::class, 'login']);
+Route::get('/login', [LoginRegister::class, 'login']);
+//Ruta la cual obtiene los datos del login
+Route::get('/recibirlogin', [LoginRegister::class, 'recibirlogin']);
+//Ruta la cual obtiene los datos del login
+Route::get('/logout', [LoginRegister::class, 'logout']);
+
