@@ -8,6 +8,11 @@
     <title>Restaurantes</title>
 </head>
 <body>
+    <select name="select">
+        @foreach($lista as $restaurante)
+            <option value="{{$restaurante->tipo_cocina}}">{{$restaurante->tipo_cocina}}</option>
+        @endforeach  
+      </select>
 <table>
             <thead>
                 <tr>
