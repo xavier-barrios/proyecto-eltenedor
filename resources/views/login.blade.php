@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- CSS --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
     {{-- JS --}}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="./js/login.js"></script>
     <title>Login | El tenedor</title>
 </head>
 <body class="d-flex">
     <div class="container my-auto mx-auto">
-        <img src="{{asset('img/logo.png')}}" class="img-fluid m-auto" alt="Logo empresa">
+        <div class="d-flex justify-content-center">
+            <img src="{{asset('img/logo.png')}}" class="img-fluid m-auto" alt="Logo empresa">
+        </div>
     	<div class="row d-flex justify-content-center">
 			<div class="p-3 col-md-6 col-md-offset-3">
 				<div class="p-3 panel panel-login">
@@ -28,38 +29,40 @@
 					<div class="panel-body p-3">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
-									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+								<form id="login-form" action="{{url('recibirlogin')}}" method="GET" role="form" style="display: block;">
+                                    @csrf
+                                    <div class="form-group">
+										<input type="email" name="email" id="email" class="form-control" placeholder="Username" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+										<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 									</div>
 									<div class="form-group">
 										<div class="row d-flex justify-content-center">
 											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Entrar">
+												<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-success" value="Entrar">
 											</div>
 										</div>
 									</div>
 								</form>
-								<form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
-									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+								<form id="register-form" action="{{url('recibirregistrar')}}" method="GET" role="form" style="display: none;">
+                                    @csrf
+                                    <div class="form-group">
+										<input type="text" name="usernameRegister" id="usernameRegister" class="form-control" placeholder="Username" required>
 									</div>
 									<div class="form-group">
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+										<input type="email" name="emailRegister" id="emailRegister" class="form-control" placeholder="Email Address" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+										<input type="password" name="passwordRegister" id="passwordRegister" class="form-control" placeholder="Password" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+										<input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirm Password" required>
 									</div>
 									<div class="form-group">
 										<div class="row d-flex justify-content-center">
 											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Registrar">
+												<input type="submit" name="register-submit" id="register-submit" class="form-control btn btn-success" value="Registrar">
 											</div>
 										</div>
 									</div>
@@ -71,5 +74,6 @@
 			</div>
 		</div>
     </div>
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
