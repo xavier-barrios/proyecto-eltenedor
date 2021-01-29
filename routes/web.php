@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginRegister;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/',[UsuariosController::class, 'login']);
+// Route::get('/', [UsuariosController::class,'index']);
+Route::get('mostrar', [UsuariosController::class,'mostrar']);
+// Route::get('/mostrar',[UsuariosController::class, 'mostrar']);
+
 ///////////////////////////////
 //////// LoginRegister ////////
 ///////////////////////////////
@@ -24,3 +31,4 @@ Route::get('/login', [LoginRegister::class, 'login']);
 Route::get('/recibirlogin', [LoginRegister::class, 'recibirlogin']);
 //Ruta la cual obtiene los datos del login
 Route::get('/logout', [LoginRegister::class, 'logout']);
+
