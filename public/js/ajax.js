@@ -25,7 +25,7 @@ function mostrar() {
     var token = document.getElementById('token').getAttribute('content');
     var ajax = new objetoAjax();
     // Busca la ruta read y que sea asyncrono
-    ajax.open('GET', 'mostrar', true);
+    ajax.open('GET', 'home', true);
     var datasend = new FormData();
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {

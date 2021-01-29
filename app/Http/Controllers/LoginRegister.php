@@ -17,6 +17,7 @@ class LoginRegister extends Controller
         return view('login');
     }
 
+
     /**
      * Logout
      */
