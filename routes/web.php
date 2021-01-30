@@ -20,7 +20,9 @@ use App\Http\Controllers\UsuariosController;
 ///////////////////////////////
 Route::get('home', [UsuariosController::class, 'home']);
 Route::get('mostrar', [UsuariosController::class, 'mostrar']);
-Route::get('modificar', [UsuariosController::class,'modificar']);
+Route::get('modificar/{id}', [UsuariosController::class,'modificar']);
+Route::get('actualizar/{id}', [UsuariosController::class,'actualizar']);
+Route::get('eliminar/{id}', [UsuariosController::class,'borrar']);
 
 ///////////////////////////////
 //////// LoginRegister ////////

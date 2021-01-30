@@ -29,7 +29,7 @@
         </form>
     </div> 
 
-    <div id="restaurantes">
+    <div id="restaurantes" class="w-75 m-auto p-3">
 
     </div>
 
