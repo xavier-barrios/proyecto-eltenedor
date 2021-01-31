@@ -28,12 +28,12 @@ class UsuariosController extends Controller
         // Recogemos todos los datos de la tabla restaurantes
         // $lista=DB::table('restaurante')->get();
         if ($filtro == "" && $filtro2 == "") {
-            $lista = DB::select('SELECT restaurante.nombre, restaurante.foto, restaurante.precio_medio,  restaurante.precio_medio, restaurante.foto, tipo.tipo_cocina, ubicacion.calle
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
             FROM restaurante 
                 INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
                 INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion');
-        }else {
-            $lista = DB::select('SELECT restaurante.nombre, restaurante.foto, restaurante.precio_medio,  restaurante.precio_medio, restaurante.foto, tipo.tipo_cocina, ubicacion.calle
+        } else {
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
             FROM restaurante 
             INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
             INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
