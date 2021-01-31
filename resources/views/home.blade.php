@@ -34,7 +34,7 @@
         <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
     </div>
     </div>
-    <div id="restaurantes">
+    <div id="restaurantes" class="restaurantes">
 
     </div>
 
