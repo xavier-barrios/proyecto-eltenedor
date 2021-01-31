@@ -35,28 +35,25 @@ function mostrar() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             var tabla = '';
-            tabla += '<table>';
-            tabla += '<tr>';
-            tabla += '<th>Foto</th>';
-            tabla += '<th>Nombre</th>';
-            tabla += '<th>Calle</th>';
-            tabla += '<th>Tipo de cocina</th>';
-            tabla += '<th>Precio medio</th>';
-            tabla += '<th>Modificar</th>';
-            tabla += '<th>Eliminar medio</th>';
-            tabla += '</tr>';
+            tabla += '<div class="row d-flex justify-content-around">';
             for (let i = 0; i < respuesta.length; i++) {
-                tabla += '<tr>'
-                tabla += '<td><img src="data:image/png;base64,' + respuesta[i].foto + '" alt="error"></td>';
-                tabla += '<td>' + respuesta[i].nombre + '</td>'
-                tabla += '<td>' + respuesta[i].calle + '</td>'
-                tabla += '<td>' + respuesta[i].tipo_cocina + '</td>'
-                tabla += '<td>' + respuesta[i].precio_medio + '</td>'
-                tabla += '<td> <button class="btn btn-primary" onclick="openmodal(&#039;' + respuesta[i].id + '&#039;,&#039;' + respuesta[i].resultado + ')">Actualizar</button></td>';
-                tabla += '<td> <button class="btn btn-danger" onclick="eliminar(' + respuesta[i].id + ')" type="sumbit">Borrar</button></td>';
-                tabla += '</tr>'
+                tabla += '<div class="col-3 p-1">';
+                tabla += '<div class="card d-flex text-white bg-cards">';
+                tabla += '<img class="card-img-top img-fluid mx-auto pt-2 imgCard" style="width: 250px; height: 215px;" src="data:image/png;base64,' + respuesta[i].foto + '" alt="Card image cap"></img>';
+                tabla += '<div class="card-body">';
+                tabla += '<h2 class="card-title">' + respuesta[i].nombre + '</h2>';
+                tabla += '<p class="card-text text-truncate">Dirección: ' + respuesta[i].ciudad + ', ' + respuesta[i].calle + ', ' + respuesta[i].cp + '</p>';
+                tabla += '<p class="card-text text-truncate">Tipo cocina: ' + respuesta[i].tipo_cocina + '</p>';
+                tabla += '<p class="card-text text-truncate">Precio: ' + respuesta[i].precio_medio + '€</p>';
+                tabla += '</div>';
+                tabla += '<div class="d-flex justify-content-center">';
+                tabla += '<form class="w-auto m-2" method="GET" action="/modificar/' + respuesta[i].id_restaurante + '"> <button class="btn btn-success" onclick="return confirm("¿Está seguro de que quiere modificar?");" type="sumbit">Modificar</button></form>';
+                tabla += '<form class="w-auto m-2" method="GET" action="/eliminar/' + respuesta[i].id_restaurante + '"> <button class="btn btn-danger" onclick="return confirm("¿Está seguro de que quiere eliminar?");" type="sumbit">Eliminar</button></form>';
+                tabla += '</div>';
+                tabla += '</div>';
+                tabla += '</div>';
             }
-            tabla += '</table>'
+            tabla += '</div>';
         }
         restaurantes.innerHTML = tabla;
     }

@@ -7,26 +7,27 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/modificar.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     {{-- JS --}}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="./js/modificar.js"></script>
     <title>Actualizar restaurante | El tenedor</title>
 </head>
 <body>
+    {{-- NAV --}}
     <div class="d-flex py-3">
-        <form class="px-5 mr-auto" method='get' action="{{url('/crear')}}">
-            <button class="btn btn btn-success" type='submit'><i class="fas fa-user-plus"></i></button>
+        <form class="px-5 mr-auto" method='get' action="{{url('/home')}}">
+            <button class="btn btn btn-success" type='submit'><i class="fas fa-arrow-left"></i></button>
         </form>
-        @if (Session::get('email_usuario'))
-        <h1>Bienvenido {{Session::get('email_usuario')}}</h1>
-        @else
-        <h1>Bienvenido!</h1>
-        @endif
+        
+        <h1>{{$restaurante->nombre}}</h1>
+        
         <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
     </div> 
-    <div class="p-5">
+    {{-- CUERPO --}}
+    <div class="p-5 d-flex">
         @if ($errors->any())
         <div class="alert-danger alert-dismissible errors" role="alert">
                 <ul>
@@ -36,36 +37,58 @@
                 </ul>
             </div>
         @endif
-        <form  action="{{url('/modificar/'.$empleado->id)}}" method="POST" enctype="multipart/form-data">
+        
+        <form action="/actualizar/{{$restaurante->id_restaurante}}" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
             @csrf
             {{method_field('PUT')}}
             <div class="form-group">
+                <input type="hidden" class="form-control" name="id_restaurante" value="{{$restaurante->id_restaurante}}">
+            </div>
+            <div class="form-group">
                 <label>Nombre</label><br>
-                <input type="text" class="form-control" name="nombre" value="{{$empleado->nombre}}" required>
+                <input type="text" class="form-control" name="nombre" value="{{$restaurante->nombre}}" required>
             </div>
             <div class="form-group">
-                <label>Primer apellido</label><br>
-                <input type="text" class="form-control" name="apellidoP" value="{{$empleado->apellidoP}}" required>    
+                <label>Código postal</label><br>
+                <input type="text" class="form-control" name="cp" value="{{$restaurante->cp}}" required>    
             </div>
             <div class="form-group">
-                <label>Segundo apellido</label><br>
-                <input type="text" class="form-control" name="apellidoM" value="{{$empleado->apellidoM}}" required>    
+                <label>Calle</label><br>
+                <input type="text" class="form-control" name="calle" value="{{$restaurante->calle}}" required>    
             </div>
             <div class="form-group">
-                <label>Fecha contrato</label><br>
-                <input type="date" class="form-control" name="fechaContrato" value="{{$empleado->fechaContrato}}" required>    
+                <label>Ciudad</label><br>
+                <input type="text" class="form-control" name="ciudad" value="{{$restaurante->ciudad}}" required>    
             </div>
             <div class="form-group">
-                <label>Sueldo</label><br>
-                <input type="number" class="form-control" name="sueldo" value="{{$empleado->sueldo}}" required>    
+                <label>Tipo cocina</label><br>
+                <select class="form-control" name="tipoCocina" id="tipoCocina">
+                    @if ($restaurante->tipo_cocina == "Vegana")
+                        <option value="Vegana">Vegana</option>
+                        <option value="Mediterranea">Mediterranea</option>
+                        <option value="India">India</option>
+                        <option value="Mexicana">Mexicana</option>
+                        @elseif ($restaurante->tipo_cocina == "Mediterranea")
+                        <option value="Mediterranea">Mediterranea</option>
+                        <option value="Vegana">Vegana</option>
+                        <option value="India">India</option>
+                        <option value="Mexicana">Mexicana</option>
+                        @elseif ($restaurante->tipo_cocina == "India")
+                        <option value="India">India</option>
+                        <option value="Vegana">Vegana</option>
+                        <option value="Mediterranea">Mediterranea</option>
+                        <option value="Mexicana">Mexicana</option>
+                        @elseif ($restaurante->tipo_cocina == "Mexicana")
+                        <option value="Mexicana">Mexicana</option>
+                        <option value="Vegana">Vegana</option>
+                        <option value="Mediterranea">Mediterranea</option>
+                        <option value="India">India</option>
+                    @endif  
+                </select>  
             </div>
             <div class="form-group">
-                <label>Complementos</label><br>
-                <input type="text" class="form-control" name="complementos" value="{{$empleado->complementos}}" required>
-            </div>
-            <div class="form-group">
-                <label>Correo</label><br>
-                <input type="email" class="form-control" name="email" value="{{$empleado->email}}" required>
+                <label>Precio medio</label><br>
+                <input type="number" class="form-control" name="precio_medio" value="{{$restaurante->precio_medio}}" required>    
             </div>
             <div class="form-group">
                 <input type="submit" class="form-control btn-success" name="Enviar" value="Enviar">
