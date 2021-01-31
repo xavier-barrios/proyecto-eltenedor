@@ -36,4 +36,5 @@ Route::get('/', [LoginRegister::class, 'login']);
 Route::get('/recibirlogin', [LoginRegister::class, 'recibirlogin']);
 //Ruta la cual obtiene los datos del login
 Route::get('/logout', [LoginRegister::class, 'logout']);
-
+//Ruta para obtener los datos del formulario
+Route::post('/recibir', [LoginRegister::class, 'recibir']);

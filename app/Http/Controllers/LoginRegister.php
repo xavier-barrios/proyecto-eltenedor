@@ -59,4 +59,19 @@ class LoginRegister extends Controller
             return redirect('/');
         }
     }
+
+    /**
+     * Recibe los datos del formulario para crear un nuevo usuario
+     */
+    public function recibir(Request $request) {
+        // Recogemos todos los datos enviados menos el token y el boton 'Registrar'
+        $datos=$request->except('Registrar');
+        
+        // Creamos el alumno en la DB.
+        DB::table('usuarios')->insertGetId(['nombre'=>$datos['usernameRegister'],'correo'=>$datos['emailRegister']
+        ,'contra'=>$datos['passwordRegister'], 'rol'=>'user']);
+
+        // Una vez creado el alumno hacemos una redireccion a mostrar.
+        return redirect('home');
+    }
 }

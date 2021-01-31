@@ -30,14 +30,12 @@
     </div> 
 
     <div>
-        <div>
-            <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
-            <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
-        </div>
+        <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
+        <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
+    </div>
+    
+    <div id="restaurantes" class="restaurantes">
         
-        <div id="restaurantes" class="restaurantes">
-            
-        </div>
     </div>
 
 </body>
