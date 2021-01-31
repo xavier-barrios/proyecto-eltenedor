@@ -12,18 +12,29 @@ class UsuariosController extends Controller
         return view('home');
     }
 
-    public function mostrar(){
+    public function mostrar(Request $request){
         // En el caso de que no se haya inicializado la sesión te redirige al login
         if(!(session()->has('email_usuario'))) {
             return redirect('/');
         }
-
+        $filtro = $request->input('filtro');
+        $filtro2 = $request->input('filtro2');
         // Recogemos todos los datos de la tabla restaurantes
         // $lista=DB::table('restaurante')->get();
-        $lista = DB::select('SELECT restaurante.nombre, restaurante.foto, restaurante.precio_medio,  restaurante.precio_medio, restaurante.foto, tipo.tipo_cocina, ubicacion.calle
-        FROM restaurante 
+        if ($filtro == "" || $filtro2 == "") {
+            $lista = DB::select('SELECT restaurante.nombre, restaurante.foto, restaurante.precio_medio,  restaurante.precio_medio, restaurante.foto, tipo.tipo_cocina, ubicacion.calle
+            FROM restaurante 
+                INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
+                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion');
+        }else {
+            $lista = DB::select('SELECT restaurante.nombre, restaurante.foto, restaurante.precio_medio,  restaurante.precio_medio, restaurante.foto, tipo.tipo_cocina, ubicacion.calle
+            FROM restaurante 
             INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
-            INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion');
+            INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+            WHERE tipo.tipo_cocina LIKE ?
+            AND restaurante.precio_medio LIKE ?',["%".$filtro."%", "%".$filtro2."%"]);
+        }
+        
         
         // Seteamos valor a la foto con base64_encode
         foreach ($lista as $i ) {

@@ -21,11 +21,15 @@ function objetoAjax() {
 
 function mostrar() {
     var restaurantes = document.getElementById('restaurantes');
+    var buscador = document.getElementById('searchCocina').value;
+    var buscador2 = document.getElementById('searchPrecio').value;
     var ajax = new objetoAjax();
     var token = document.getElementById('token').getAttribute('content');
     // Busca la ruta read y que sea asyncrono
-    ajax.open('GET', 'mostrar', true);
+    ajax.open('POST', 'mostrar', true);
     var datasend = new FormData();
+    datasend.append('filtro', buscador);
+    datasend.append('filtro2', buscador2);
     datasend.append('_token', token);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
