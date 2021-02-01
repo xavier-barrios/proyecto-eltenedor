@@ -23,7 +23,7 @@ Route::post('mostrar', [UsuariosController::class, 'mostrar']);
 // Route::get('modificar', [UsuariosController::class,'modificar']);
 // Route::get('mostrar', [UsuariosController::class, 'mostrar']);
 Route::get('modificar/{id}', [UsuariosController::class,'modificar']);
-Route::get('actualizar/{id}', [UsuariosController::class,'actualizar']);
+Route::put('actualizar/{id}', [UsuariosController::class,'actualizar']);
 Route::get('eliminar/{id}', [UsuariosController::class,'borrar']);
 
 ///////////////////////////////
