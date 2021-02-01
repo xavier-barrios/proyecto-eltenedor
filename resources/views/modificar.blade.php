@@ -39,7 +39,7 @@
             </div>
         @endif
         
-        <form action="/actualizar/{{$restaurante->id_restaurante}}" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
+        <form action="../actualizar/{{$restaurante->id_restaurante}}" method="put" enctype="multipart/form-data" class="w-50 m-auto">
             @csrf
             {{method_field('PUT')}}
             <div class="form-group">
@@ -85,7 +85,7 @@
                         <option value="Mediterranea">Mediterranea</option>
                         <option value="India">India</option>
                     @endif  
-                </select>  
+                </select>
             </div>
             <div class="form-group">
                 <label>Precio medio</label><br>
