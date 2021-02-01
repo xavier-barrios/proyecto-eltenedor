@@ -38,6 +38,9 @@
 										<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 									</div>
 									<div class="form-group">
+										<p id="msgLogin"></p>
+									</div>
+									<div class="form-group">
 										<div class="row d-flex justify-content-center">
 											<div class="col-sm-6 col-sm-offset-3">
 												<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-success" value="Entrar">
@@ -45,7 +48,7 @@
 										</div>
 									</div>
 								</form>
-								<form id="register-form" action="{{url('recibirregistrar')}}" method="GET" role="form" style="display: none;">
+								<form id="register-form" action="{{url('recibir')}}" onsubmit="return validarPass();" method="POST" role="form" style="display: none;">
                                     @csrf
                                     <div class="form-group">
 										<input type="text" name="usernameRegister" id="usernameRegister" class="form-control" placeholder="Username" required>
@@ -58,6 +61,9 @@
 									</div>
 									<div class="form-group">
 										<input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirm Password" required>
+									</div>
+									<div class="form-group">
+										<p id="msg"></p>
 									</div>
 									<div class="form-group">
 										<div class="row d-flex justify-content-center">
