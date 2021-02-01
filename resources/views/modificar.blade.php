@@ -84,7 +84,7 @@
                         <option value="Mediterranea">Mediterranea</option>
                         <option value="India">India</option>
                     @endif  
-                </select>  
+                </select>
             </div>
             <div class="form-group">
                 <label>Precio medio</label><br>

@@ -69,14 +69,9 @@ class UsuariosController extends Controller
     /**
      * Actuliza el usuario especificado por el parametro de entrada (id).
      */
-    public function actualizar($id, Request $request) {
+    public function actualizar($id) {
         // Recibir los datos del formulario con el request.
         $datos = $request->except('_token','Enviar','_method');
-
-        // Para poder modificar el empleado, sin cambiar el correo
-        $request->validate([
-            'email' => 'sometimes|required|email|unique:empleados,email,'.$id,
-        ]);
 
         //Actualizar la bd con los datos recibidos.
         DB::table('restaurante')->where('id','=',$id)->update($datos);
