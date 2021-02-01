@@ -71,19 +71,16 @@ class UsuariosController extends Controller
     /**
      * Actuliza el usuario especificado por el parametro de entrada (id).
      */
-    public function actualizar($id) {
+    public function actualizar(Request $request, $id) {
         // Recibir los datos del formulario con el request.
-        $datos->except('_token','Enviar','_method');
-        echo $id;
-        echo "<br>";
-        echo $datos;
+        $datos = $request->except('_token','Enviar','_method');
         //Actualizar la bd con los datos recibidos.
-        // DB::table('restaurante')->where('id','=',$id)->update(array(['nombre'=>$datos['nombre'],'precio_medio'=>$datos['precio_medio']]));
+        DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'precio_medio'=>$datos['precio_medio']]);
         // DB::table('ubicacion')->where('id','=',$id)->update(['cp'=>$datos['cp'],'calle'=>$datos['calle'],'ciudad'=>$datos['ciudad']]);
         // DB::table('tipo')->where('id','=',$id)->update(['tipo_cocina'=>$datos['tipoCocina']]);
         
         //Redirigir a mostrar
-        // return redirect('mostrar');
+        return redirect('mostrar');
     }
 
     /**

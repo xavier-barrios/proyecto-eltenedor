@@ -38,7 +38,7 @@
             </div>
         @endif
         
-        <form action="../actualizar/{{$restaurante->id_restaurante}}" method="put" enctype="multipart/form-data" class="w-50 m-auto">
+        <form action="{{url('actualizar/'.$restaurante->id_restaurante)}}" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
             @csrf
             {{method_field('PUT')}}
             <div class="form-group">
