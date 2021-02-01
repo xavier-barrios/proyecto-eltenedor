@@ -92,7 +92,7 @@ class UsuariosController extends Controller
      */
     public function borrar($id) {
         //Eliminamos un empleado de la BD, especificando el id
-        DB::table('restaurante')->where('id_restaurante', "=", $id)->delete();
+        DB::table('restaurante')->where('id_restaurante', "=", $id)->update(array('estado'=>'0'));
         //Volvemos a la vista mostrar
         return redirect('home');
     }

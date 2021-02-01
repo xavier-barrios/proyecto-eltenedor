@@ -28,12 +28,14 @@
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
     </div> 
-
-    <div>
-        <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
-        <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
+    <div class="container my-auto mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="p-3 panel panel-login">
+                <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
+                <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
+            </div>
+        </div>
     </div>
-    
     <div id="restaurantes" class="restaurantes">
         
     </div>
