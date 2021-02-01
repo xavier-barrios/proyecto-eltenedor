@@ -31,14 +31,16 @@ class UsuariosController extends Controller
             $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
             FROM restaurante 
                 INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
-                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion');
+                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+                WHERE restaurante.estado = "1"');
         } else {
             $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
             FROM restaurante 
             INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
             INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
             WHERE tipo.tipo_cocina LIKE ?
-            AND restaurante.precio_medio LIKE ?',["%".$filtro."%", "%".$filtro2."%"]);
+            AND restaurante.precio_medio LIKE ?
+            AND restaurante.estado = "1"',["%".$filtro."%", "%".$filtro2."%"]);
         }
         
         
@@ -85,7 +87,7 @@ class UsuariosController extends Controller
      */
     public function borrar($id) {
         //Eliminamos un empleado de la BD, especificando el id
-        DB::table('restaurante')->where('id_restaurante', "=", $id)->delete();
+        DB::table('restaurante')->where('id_restaurante', "=", $id)->update(array('estado'=>'0'));
         //Volvemos a la vista mostrar
         return redirect('home');
     }
