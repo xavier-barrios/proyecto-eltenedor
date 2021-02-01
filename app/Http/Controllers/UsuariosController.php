@@ -93,4 +93,39 @@ class UsuariosController extends Controller
         //Volvemos a la vista mostrar
         return redirect('home');
     }
+
+    /**
+     * Redirige a la vista donde puedes crear un nuevo restaurante.
+     */
+    public function crear() {
+        return view('crear');
+    }
+
+    /**
+     * Recibe los datos del formulario para crear un nuevo empleado
+     */
+    public function crearRestaurante(Request $request) {
+        // Recogemos todos los datos enviados menos el token y el boton 'Enviar'
+        $datos=$request->except('Enviar');
+        
+        // Creamos la ubicacion en la DB.
+        DB::table('ubicacion')->insertGetId(['cp'=>$datos['cp'],'calle'=>$datos['calle']
+        ,'ciudad'=>$datos['ciudad']]);
+
+        // Recuperamos el id de la ubicacion
+        $lastID = DB::getPdo()->lastInsertId();;
+
+        // Pasamos la imagen a la variable $img
+        $img = $request->file('img')->getRealPath();
+        //Traemos el contenido del fichero $img
+        $bin = file_get_contents($img);
+
+        // Creamos el restaurante en la DB.
+        DB::table('restaurante')->insertGetId(['nombre'=>$datos['nombre'],'id_ubicacion'=>$lastID
+        ,'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio']
+        ,'foto'=>$bin]);
+
+        // Una vez creado el alumno hacemos una redireccion a mostrar.
+        return redirect('home');
+    }
 }
