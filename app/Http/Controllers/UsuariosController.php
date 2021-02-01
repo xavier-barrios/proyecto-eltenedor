@@ -74,14 +74,16 @@ class UsuariosController extends Controller
     public function actualizar($id) {
         // Recibir los datos del formulario con el request.
         $datos->except('_token','Enviar','_method');
-
+        echo $id;
+        echo "<br>";
+        echo $datos;
         //Actualizar la bd con los datos recibidos.
-        DB::table('restaurante')->where('id','=',$id)->update(['nombre'=>$datos['nombre'],'precio_medio'=>$datos['precio_medio']]);
-        DB::table('ubicacion')->where('id','=',$id)->update(['cp'=>$datos['cp'],'calle'=>$datos['calle'],'ciudad'=>$datos['ciudad']]);
-        DB::table('ubicacion')->where('id','=',$id)->update(['tipo_cocina'=>$datos['tipoCocina']]);
+        // DB::table('restaurante')->where('id','=',$id)->update(array(['nombre'=>$datos['nombre'],'precio_medio'=>$datos['precio_medio']]));
+        // DB::table('ubicacion')->where('id','=',$id)->update(['cp'=>$datos['cp'],'calle'=>$datos['calle'],'ciudad'=>$datos['ciudad']]);
+        // DB::table('tipo')->where('id','=',$id)->update(['tipo_cocina'=>$datos['tipoCocina']]);
         
         //Redirigir a mostrar
-        return redirect('mostrar');
+        // return redirect('mostrar');
     }
 
     /**
