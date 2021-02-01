@@ -31,14 +31,16 @@ class UsuariosController extends Controller
             $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
             FROM restaurante 
                 INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
-                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion');
+                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+                WHERE restaurante.estado = "1"');
         } else {
             $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
             FROM restaurante 
             INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
             INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
             WHERE tipo.tipo_cocina LIKE ?
-            AND restaurante.precio_medio LIKE ?',["%".$filtro."%", "%".$filtro2."%"]);
+            AND restaurante.precio_medio LIKE ?
+            AND restaurante.estado = "1"',["%".$filtro."%", "%".$filtro2."%"]);
         }
         
         
