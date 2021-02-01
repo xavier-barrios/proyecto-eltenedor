@@ -25,6 +25,10 @@ Route::post('mostrar', [UsuariosController::class, 'mostrar']);
 Route::get('modificar/{id}', [UsuariosController::class,'modificar']);
 Route::get('actualizar/{id}', [UsuariosController::class,'actualizar']);
 Route::get('eliminar/{id}', [UsuariosController::class,'borrar']);
+//Ruta para mostrar vista crear
+Route::get('/crear', [UsuariosController::class, 'crear']);
+//Ruta para añadir restaurante
+Route::post('/crearRestaurante', [UsuariosController::class, 'crearRestaurante']);
 
 ///////////////////////////////
 //////// LoginRegister ////////
