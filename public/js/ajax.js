@@ -47,8 +47,8 @@ function mostrar() {
                 tabla += '<p class="card-text text-truncate">Precio: ' + respuesta[i].precio_medio + '€</p>';
                 tabla += '</div>';
                 tabla += '<div class="d-flex justify-content-center">';
-                tabla += '<form class="w-auto m-2" method="GET" action="/modificar/' + respuesta[i].id_restaurante + '"> <button class="btn btn-success" onclick="return confirm("¿Está seguro de que quiere modificar?");" type="sumbit">Modificar</button></form>';
-                tabla += '<form class="w-auto m-2" method="GET" action="/eliminar/' + respuesta[i].id_restaurante + '"> <button class="btn btn-danger" onclick="return confirm("¿Está seguro de que quiere eliminar?");" type="sumbit">Eliminar</button></form>';
+                tabla += '<form class="w-auto m-2" method="GET" action="modificar/' + respuesta[i].id_restaurante + '"> <button class="btn btn-success" onclick="return confirm("¿Está seguro de que quiere modificar?");" type="sumbit">Modificar</button></form>';
+                tabla += '<form class="w-auto m-2" method="GET" action="eliminar/' + respuesta[i].id_restaurante + '"> <button class="btn btn-danger" onclick="return confirm("¿Está seguro de que quiere eliminar?");" type="sumbit">Eliminar</button></form>';
                 tabla += '</div>';
                 tabla += '</div>';
                 tabla += '</div>';
