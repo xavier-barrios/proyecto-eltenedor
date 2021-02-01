@@ -81,7 +81,8 @@ class UsuariosController extends Controller
         ]);
 
         //Actualizar la bd con los datos recibidos.
-        DB::table('restaurante')->where('id','=',$id)->update($datos);
+        DB::table('ubicacion')->where('id','=',$id)->update(['cp'=>$datos['cp'],'calle'=>$datos['calle'],'ciudad'=>$datos['ciudad']]);
+        // DB::table('restaurante')->where('id','=',$id)->update($datos);
 
         //Redirigir a mostrar
         return redirect('mostrar');
