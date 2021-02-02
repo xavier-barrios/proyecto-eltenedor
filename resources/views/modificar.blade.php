@@ -15,18 +15,19 @@
     <title>Actualizar restaurante | El tenedor</title>
 </head>
 <body>
-    {{-- NAV --}}
-    <div class="d-flex py-3">
-        <form class="px-5 mr-auto" method='get' action="{{url('/home')}}">
-            <button class="btn btn btn-success" type='submit'><i class="fas fa-arrow-left"></i></button>
-        </form>
-        
-        <h1>{{$restaurante->nombre}}</h1>
+    <div class="d-flex py-3 topNav">
+        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="270px" height="60px" alt="Logo ElTenedor"></a>
         
         <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
+        @if (Session::get('usuario')->rol == "admin")
+        <form id="bajaRes" method='get' action="{{url('/baja_restaurante')}}">
+            <button class="btn btn btn-success" type='submit'>Restaurantes de baja</button>
+        </form>
+        @endif
     </div> 
+
     {{-- CUERPO --}}
     <div class="p-5 d-flex">
         @if ($errors->any())
@@ -38,10 +39,12 @@
                 </ul>
             </div>
         @endif
+
         
         <form action="{{url('actualizar/'.$restaurante->id_restaurante)}}" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
             @csrf
             {{method_field('PUT')}}
+            <h1>{{$restaurante->nombre}}</h1>
             <div class="form-group">
                 <input type="hidden" class="form-control" name="id_restaurante" value="{{$restaurante->id_restaurante}}">
             </div>

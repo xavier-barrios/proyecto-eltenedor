@@ -17,31 +17,39 @@
 </head>
 <body>
     <div class="d-flex py-3 topNav">
-        <img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="250px" height="50px" alt="Logo ElTenedor">
+        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="270px" height="60px" alt="Logo ElTenedor"></a>
         
         <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
-        <form class="px-5 mr-auto" method='get' action="{{url('/baja_restaurante')}}">
-            <button class="btn btn btn-success" type='submit'><i class="fas fa-user-plus"></i></button>
+        @if (Session::get('usuario')->rol == "admin")
+        <form id="bajaRes" method='get' action="{{url('/baja_restaurante')}}">
+            <button class="btn btn btn-success" type='submit'>Restaurantes de baja</button>
         </form>
+        @endif
     </div> 
     
     <div>
-        <div class="d-flex justify-content-between mt-5 margin">
+        <div class="d-flex justify-content-between mt-5 mb-3 margin">
             @if (Session::get('usuario'))
-            <h1>Bienvenido {{Session::get('usuario')->correo}}</h1>
+            <h1>Bienvenido {{Session::get('usuario')->nombre}}</h1>
             @else
             <h1>Bienvenido!</h1>
             @endif
             <input type="hidden" value="{{Session::get('usuario')->rol}}" id="rol"> 
-            <div class="p-3 panel panel-login">
-                <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
-                <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
+            <div class="p-3 panel panel-login d-flex">
+                <div class="form-group p-1">
+                    <label for="searchCocina" class="m-0 ml-2">Tipo comida</label><br>
+                    <input type="text" class="p-2" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
+                </div>
+                <div class="form-group p-1">
+                    <label for="searchPrecio" class="m-0 ml-2">Precio</label><br>
+                    <input type="text" class="p-2" name="searchPrecio" id="searchPrecio" placeholder="Precio medio" onkeyup="mostrar()">
+                </div>
             </div>
         </div>
         
-        <div id="restaurantes" class="margin">
+        <div id="restaurantes" class="margin p-2">
         
         </div>
     </div>

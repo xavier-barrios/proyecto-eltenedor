@@ -35,7 +35,7 @@ function baja() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             var tabla = '';
-            tabla += '<div class="row d-flex justify-content-around">';
+            tabla += '<div class="row d-flex">';
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += '<div class="col-3 p-1">';
                 tabla += '<div class="card d-flex text-white bg-cards">';

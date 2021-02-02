@@ -6,6 +6,18 @@
         -webkit-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
         -moz-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
         box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
+        background-color: white;
+    }
+    
+    label {
+        font-size: 9px;
+    }
+    
+    #bajaRes {
+        position: fixed!important;
+        top: 285px;
+        left: -65px;
+        transform: rotate(-90deg);
     }
     
     form,
@@ -16,8 +28,8 @@
     }
     
     .margin {
-        margin-left: 8%;
-        margin-right: 8%;
+        margin-left: 15%;
+        margin-right: 15%;
     }
     
     .panel-login {

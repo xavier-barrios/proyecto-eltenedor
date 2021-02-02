@@ -1,0 +1,79 @@
+.topNav {
+    -webkit-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
+    -moz-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
+    box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
+    background-color: white;
+}
+
+.bg-cards {
+    background-color: #414549b9;
+}
+
+.panel-login {
+    background-color: #ffffff60;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.panel-login>.panel-heading {
+    color: #00415d;
+    border-color: black;
+    text-align: center;
+}
+
+.panel-login>.panel-heading a {
+    text-decoration: none;
+    color: rgb(116, 116, 116);
+    font-weight: bold;
+    font-size: 20px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.panel-login>.panel-heading a.active {
+    color: #1CB94E;
+    font-size: 27px;
+}
+
+.panel-login input[type="text"] {
+    height: 45px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.panel-login input:hover,
+.panel-login input:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #ccc;
+}
+
+#bajaRes {
+    position: fixed!important;
+    top: 200px;
+    left: -65px;
+    transform: rotate(-90deg);
+}
+
+form,
+h1 {
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.margin {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+label {
+    font-size: 9px;
+}
