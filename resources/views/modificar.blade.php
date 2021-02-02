@@ -39,7 +39,7 @@
             </div>
         @endif
         
-        <form action="../actualizar/{{$restaurante->id_restaurante}}" method="put" enctype="multipart/form-data" class="w-50 m-auto">
+        <form action="{{url('actualizar/'.$restaurante->id_restaurante)}}" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
             @csrf
             {{method_field('PUT')}}
             <div class="form-group">
@@ -65,31 +65,35 @@
                 <label>Tipo cocina</label><br>
                 <select class="form-control" name="tipoCocina" id="tipoCocina">
                     @if ($restaurante->tipo_cocina == "Vegana")
-                        <option value="Vegana">Vegana</option>
-                        <option value="Mediterranea">Mediterranea</option>
-                        <option value="India">India</option>
-                        <option value="Mexicana">Mexicana</option>
+                        <option value="3">Vegana</option>
+                        <option value="4">Mediterranea</option>
+                        <option value="1">India</option>
+                        <option value="2">Mexicana</option>
                         @elseif ($restaurante->tipo_cocina == "Mediterranea")
-                        <option value="Mediterranea">Mediterranea</option>
-                        <option value="Vegana">Vegana</option>
-                        <option value="India">India</option>
-                        <option value="Mexicana">Mexicana</option>
+                        <option value="4">Mediterranea</option>
+                        <option value="3">Vegana</option>
+                        <option value="1">India</option>
+                        <option value="2">Mexicana</option>
                         @elseif ($restaurante->tipo_cocina == "India")
-                        <option value="India">India</option>
-                        <option value="Vegana">Vegana</option>
-                        <option value="Mediterranea">Mediterranea</option>
-                        <option value="Mexicana">Mexicana</option>
+                        <option value="1">India</option>
+                        <option value="3">Vegana</option>
+                        <option value="4">Mediterranea</option>
+                        <option value="2">Mexicana</option>
                         @elseif ($restaurante->tipo_cocina == "Mexicana")
-                        <option value="Mexicana">Mexicana</option>
-                        <option value="Vegana">Vegana</option>
-                        <option value="Mediterranea">Mediterranea</option>
-                        <option value="India">India</option>
+                        <option value="2">Mexicana</option>
+                        <option value="3">Vegana</option>
+                        <option value="4">Mediterranea</option>
+                        <option value="1">India</option>
                     @endif  
                 </select>
             </div>
             <div class="form-group">
                 <label>Precio medio</label><br>
                 <input type="number" class="form-control" name="precio_medio" value="{{$restaurante->precio_medio}}" required>    
+            </div>
+            <div class="form-group">
+                <label for="img">Logo</label><br>
+                <input type="file" id="img" name="img" accept=".gif, .png, .jpg, .jpeg" value="{{$restaurante->foto}}">
             </div>
             <div class="form-group">
                 <input type="submit" class="form-control btn-success" name="Enviar" value="Enviar">

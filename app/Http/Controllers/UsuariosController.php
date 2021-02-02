@@ -79,25 +79,36 @@ class UsuariosController extends Controller
     /**
      * Actuliza el usuario especificado por el parametro de entrada (id).
      */
-    public function actualizar($id) {
+    public function actualizar(Request $request, $id) {
         // Recibir los datos del formulario con el request.
-        // $datos = except('_token','Enviar','_method');
-        // echo $id;
-        // echo "<br>";
-        // echo $datos;
+        $datos = $request->except('Enviar','_method');
+
+        // Select de los campos que queremos actualizar
+        $restaurante = DB::table('restaurante')->where('id_restaurante', $id)->first();
+
         //Actualizar la bd con los datos recibidos.
-        // DB::table('restaurante')->where('id','=',$id)->update(array(['nombre'=>$datos['nombre'],'precio_medio'=>$datos['precio_medio']]));
-        //  DB::table('ubicacion')->where('id','=',$id)->update(['cp'=>$datos['cp'],'calle'=>$datos['calle'],'ciudad'=>$datos['ciudad']]);
-        // DB::table('tipo')->where('id','=',$id)->update(['tipo_cocina'=>$datos['tipoCocina']]);
+        DB::table('ubicacion')->where('id_ubicacion','=',$restaurante->id_ubicacion)->update(['cp'=>$datos['cp'],'calle'=>$datos['calle'],'ciudad'=>$datos['ciudad']]);
         
+        //Depende de si el usuario ha seleccionado una imagen nueva o no, ejecuta una query u otra
+        if(isset($datos['img'])) {
+            // Pasamos la imagen a la variable $img
+            $img = $request->file('img')->getRealPath();
+            //Traemos el contenido del fichero $img
+            $bin = file_get_contents($img);
+
+            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'foto'=>$bin]);
+        } else {
+            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio']]);
+        }
+
         //Redirigir a mostrar
-        // return redirect('mostrar');
+        return redirect('home');
     }
 
     /**
-     * Borrar el usuario especificado por el parametro de entrada.
+     * Da de baja el restaurante especificado por el parametro de entrada.
      */
-    public function borrar($id) {
+    public function baja($id) {
         //Eliminamos un empleado de la BD, especificando el id
         DB::table('restaurante')->where('id_restaurante', "=", $id)->update(array('estado'=>'0'));
         //Volvemos a la vista mostrar
