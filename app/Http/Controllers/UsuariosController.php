@@ -71,7 +71,7 @@ class UsuariosController extends Controller
     /**
      * Actuliza el usuario especificado por el parametro de entrada (id).
      */
-    public function actualizar($id, Request $request) {
+    public function actualizar(Request $request, $id) {
         // Recibir los datos del formulario con el request.
         $datos = $request->except('Enviar','_method');
 
