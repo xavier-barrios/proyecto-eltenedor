@@ -17,8 +17,7 @@
 </head>
 <body>
     <div class="d-flex py-3">
-        <form class="px-5 mr-auto" method='get' action="{{url('/crear')}}">
-            <button class="btn btn btn-success" type='submit'><i class="fas fa-user-plus"></i></button>
+        <form class="px-5 mr-auto" method='get'>
         </form>
         @if (Session::get('email_usuario'))
         <h1>Bienvenido {{Session::get('email_usuario')}}</h1>
@@ -32,8 +31,8 @@
     <div class="container my-auto mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="p-3 panel panel-login">
-                <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
-                <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
+                <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar2()">
+                <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar2()">
             </div>
         </div>
     </div>
