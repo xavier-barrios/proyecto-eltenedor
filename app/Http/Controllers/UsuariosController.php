@@ -73,24 +73,34 @@ class UsuariosController extends Controller
      */
     public function actualizar($id, Request $request) {
         // Recibir los datos del formulario con el request.
-        $datos = $request->except('_token','Enviar','_method');
+        $datos = $request->except('Enviar','_method');
 
-        // Para poder modificar el empleado, sin cambiar el correo
-        $request->validate([
-            'email' => 'sometimes|required|email|unique:empleados,email,'.$id,
-        ]);
+        // Select de los campos que queremos actualizar
+        $restaurante = DB::table('restaurante')->where('id_restaurante', $id)->first();
 
         //Actualizar la bd con los datos recibidos.
-        DB::table('restaurante')->where('id','=',$id)->update($datos);
+        DB::table('ubicacion')->where('id_ubicacion','=',$restaurante->id_ubicacion)->update(['cp'=>$datos['cp'],'calle'=>$datos['calle'],'ciudad'=>$datos['ciudad']]);
+        
+        //Depende de si el usuario ha seleccionado una imagen nueva o no, ejecuta una query u otra
+        if(isset($datos['img'])) {
+            // Pasamos la imagen a la variable $img
+            $img = $request->file('img')->getRealPath();
+            //Traemos el contenido del fichero $img
+            $bin = file_get_contents($img);
+
+            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'foto'=>$bin]);
+        } else {
+            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio']]);
+        }
 
         //Redirigir a mostrar
-        return redirect('mostrar');
+        return redirect('home');
     }
 
     /**
-     * Borrar el usuario especificado por el parametro de entrada.
+     * Da de baja el restaurante especificado por el parametro de entrada.
      */
-    public function borrar($id) {
+    public function baja($id) {
         //Eliminamos un empleado de la BD, especificando el id
         DB::table('restaurante')->where('id_restaurante', "=", $id)->update(array('estado'=>'0'));
         //Volvemos a la vista mostrar

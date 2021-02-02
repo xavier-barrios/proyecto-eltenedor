@@ -18,16 +18,19 @@ use App\Http\Controllers\UsuariosController;
 ///////////////////////////////
 ////// UsuariosController /////
 ///////////////////////////////
+// Ruta la cual dirige al home
 Route::get('home', [UsuariosController::class, 'home']);
+// Ruta que devuelve los datos a mostrar
 Route::post('mostrar', [UsuariosController::class, 'mostrar']);
-// Route::get('modificar', [UsuariosController::class,'modificar']);
-// Route::get('mostrar', [UsuariosController::class, 'mostrar']);
+// Ruta que recoge los datos para rellenar el formulario
 Route::get('modificar/{id}', [UsuariosController::class,'modificar']);
-Route::get('actualizar/{id}', [UsuariosController::class,'actualizar']);
-Route::get('eliminar/{id}', [UsuariosController::class,'borrar']);
-//Ruta para mostrar vista crear
+// Ruta para actualizar los datos del restaurante
+Route::put('actualizar/{id}', [UsuariosController::class,'actualizar']);
+// Ruta para dar de baja el restaurante
+Route::get('baja/{id}', [UsuariosController::class,'baja']);
+// Ruta para mostrar vista crear
 Route::get('/crear', [UsuariosController::class, 'crear']);
-//Ruta para añadir restaurante
+// Ruta para añadir restaurante
 Route::post('/crearRestaurante', [UsuariosController::class, 'crearRestaurante']);
 
 ///////////////////////////////
@@ -35,7 +38,6 @@ Route::post('/crearRestaurante', [UsuariosController::class, 'crearRestaurante']
 ///////////////////////////////
 //Ruta default la cual dirige al login
 Route::get('/', [LoginRegister::class, 'login']);
-// Route::get('/login', [LoginRegister::class, 'login']);
 //Ruta la cual obtiene los datos del login
 Route::get('/recibirlogin', [LoginRegister::class, 'recibirlogin']);
 //Ruta la cual obtiene los datos del login
