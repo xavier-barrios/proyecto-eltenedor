@@ -19,6 +19,7 @@ use App\Http\Controllers\UsuariosController;
 ////// UsuariosController /////
 ///////////////////////////////
 Route::get('home', [UsuariosController::class, 'home']);
+Route::get('home2', [UsuariosController::class, 'home2']);
 Route::post('mostrar', [UsuariosController::class, 'mostrar']);
 // Route::get('modificar', [UsuariosController::class,'modificar']);
 // Route::get('mostrar', [UsuariosController::class, 'mostrar']);
