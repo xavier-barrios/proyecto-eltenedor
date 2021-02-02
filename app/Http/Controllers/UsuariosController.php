@@ -11,24 +11,17 @@ class UsuariosController extends Controller
 
     public function home(){
         // En el caso de que no se haya inicializado la sesión te redirige al login
-        if(!(session()->has('email_usuario'))) {
+        if(!(session()->has('usuario'))) {
             return redirect('/');
         }
 
         return view('home');
     }
-    public function home2(){
-        // En el caso de que no se haya inicializado la sesión te redirige al login
-        if(!(session()->has('email_usuario'))) {
-            return redirect('/');
-        }
 
-        return view('home2');
-    }
 
     public function mostrar(Request $request){
         // En el caso de que no se haya inicializado la sesión te redirige al login
-        if(!(session()->has('email_usuario'))) {
+        if (!(session()->has('usuario'))) {
             return redirect('/');
         }
         $filtro = $request->input('filtro');
@@ -156,7 +149,7 @@ class UsuariosController extends Controller
 
     public function mostrarbaja(Request $request){
         // En el caso de que no se haya inicializado la sesión te redirige al login
-        if(!(session()->has('email_usuario'))) {
+        if(!(session()->has('usuario'))) {
             return redirect('/');
         }
         $filtro = $request->input('filtro');

@@ -24,7 +24,7 @@ class LoginRegister extends Controller
     public function logout() {
         session()->flush();
         Auth::logout();
-        session()->forget(['email_usuario']);
+        session()->forget(['usuario']);
         return redirect('/');
     }
 
@@ -48,27 +48,27 @@ class LoginRegister extends Controller
             ['contra', '=', $datos['password']]
             ])->first();
         
-        $rol = DB::select('SELECT usuarios.rol
-        FROM usuarios
-        WHERE usuarios.correo = ?', [$email]);
+        // $rol = DB::select('SELECT *
+        // FROM usuarios
+        // WHERE usuarios.correo = ?', [$email]);
         
         // Si existe el admin, la variable $pasa valdrá 1, entonces entrar en el if
         // de lo contrario pasa por el else y nos redirige al login
         
         if ($pasa > 0) {
             // Establecer sesion y redirigir a la pagina mostrar.
-            if ($rol[0]->rol == 'admin') {
-                // Establecer sesion y redirigir a la pagina mostrar.
-                session()->put('email_usuario', $request->email);
+            // if ($result[0]->rol == 'admin') {
+            //     // Establecer sesion y redirigir a la pagina mostrar.
+                session()->put('usuario', $result);
                 return redirect('home');
-            }elseif ($rol[0]->rol == 'user') {
-                // Establecer sesion y redirigir a la pagina mostrar.
-                session()->put('email_usuario', $request->email);
-                return redirect('home2');
-            }else {
-                // Redirigir al login
-                return redirect('/');
-            }
+            // }elseif ($result[0]->rol == 'user') {
+            //     // Establecer sesion y redirigir a la pagina mostrar.
+            //     session()->put('email_usuario', $request->email);
+            //     return redirect('home2');
+            // }else {
+            //     // Redirigir al login
+            //     return redirect('/');
+            // }
         }else {
             // Redirigir al login
             return redirect('/');

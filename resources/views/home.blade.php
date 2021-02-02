@@ -29,12 +29,12 @@
     
     <div>
         <div class="d-flex justify-content-between mt-5 margin">
-            @if (Session::get('email_usuario'))
-            <h1>Bienvenido {{Session::get('email_usuario')}}</h1>
+            @if (Session::get('usuario'))
+            <h1>Bienvenido {{Session::get('usuario')->correo}}</h1>
             @else
             <h1>Bienvenido!</h1>
             @endif
-            
+            <input type="hidden" value="{{Session::get('usuario')->rol}}" id="rol"> 
             <div class="p-3 panel panel-login">
                 <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
                 <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">

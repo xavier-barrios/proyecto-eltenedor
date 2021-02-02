@@ -21,6 +21,7 @@ function objetoAjax() {
 
 function mostrar() {
     var restaurantes = document.getElementById('restaurantes');
+    var rol = document.getElementById('rol').value;
     var buscador = document.getElementById('searchCocina').value;
     var buscador2 = document.getElementById('searchPrecio').value;
     var ajax = new objetoAjax();
@@ -58,10 +59,14 @@ function mostrar() {
                 tabla += '<p class="card-text text-truncate">Tipo cocina: ' + respuesta[i].tipo_cocina + '</p>';
                 tabla += '<p class="card-text text-truncate">Precio: ' + respuesta[i].precio_medio + '€</p>';
                 tabla += '</div>';
-                tabla += '<div class="d-flex justify-content-center">';
-                tabla += '<form class="w-auto m-2" method="GET" action="modificar/' + respuesta[i].id_restaurante + '"><button class="btn btn-success" type="sumbit">Modificar</button></form>';
-                tabla += '<form class="w-auto m-2" method="GET" action="baja/' + respuesta[i].id_restaurante + '"> <button class="btn btn-danger" type="sumbit">Baja</button></form>';
-                tabla += '</div>';
+
+                if (rol == 'admin') {
+                    tabla += '<div class="d-flex justify-content-center">';
+                    tabla += '<form class="w-auto m-2" method="GET" action="modificar/' + respuesta[i].id_restaurante + '"><button class="btn btn-success" type="sumbit">Modificar</button></form>';
+                    tabla += '<form class="w-auto m-2" method="GET" action="baja/' + respuesta[i].id_restaurante + '"> <button class="btn btn-danger" type="sumbit">Baja</button></form>';
+                    tabla += '</div>';
+                }
+
                 tabla += '</div>';
                 tabla += '</div>';
             }
