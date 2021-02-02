@@ -20,6 +20,7 @@ use App\Http\Controllers\UsuariosController;
 ///////////////////////////////
 // Ruta la cual dirige al home
 Route::get('home', [UsuariosController::class, 'home']);
+Route::get('home2', [UsuariosController::class, 'home2']);
 // Ruta que devuelve los datos a mostrar
 Route::post('mostrar', [UsuariosController::class, 'mostrar']);
 // Ruta que recoge los datos para rellenar el formulario
@@ -28,6 +29,12 @@ Route::get('modificar/{id}', [UsuariosController::class,'modificar']);
 Route::put('actualizar/{id}', [UsuariosController::class,'actualizar']);
 // Ruta para dar de baja el restaurante
 Route::get('baja/{id}', [UsuariosController::class,'baja']);
+// Ruta ver restaurantes deshabilitados
+Route::get('baja_restaurante', [UsuariosController::class,'baja_restaurante']);
+// Ruta que devuelve los datos a baja
+Route::post('mostrarbaja', [UsuariosController::class, 'mostrarbaja']);
+// Ruta para dar de baja el restaurante
+Route::get('alta/{id}', [UsuariosController::class,'alta']);
 // Ruta para mostrar vista crear
 Route::get('/crear', [UsuariosController::class, 'crear']);
 // Ruta para añadir restaurante

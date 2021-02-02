@@ -17,6 +17,14 @@ class UsuariosController extends Controller
 
         return view('home');
     }
+    public function home2(){
+        // En el caso de que no se haya inicializado la sesión te redirige al login
+        if(!(session()->has('email_usuario'))) {
+            return redirect('/');
+        }
+
+        return view('home2');
+    }
 
     public function mostrar(Request $request){
         // En el caso de que no se haya inicializado la sesión te redirige al login
@@ -140,5 +148,53 @@ class UsuariosController extends Controller
 
         // Una vez creado el alumno hacemos una redireccion a mostrar.
         return redirect('home');
+    }
+
+    public function baja_restaurante(){
+        return view('baja');
+    }
+
+    public function mostrarbaja(Request $request){
+        // En el caso de que no se haya inicializado la sesión te redirige al login
+        if(!(session()->has('email_usuario'))) {
+            return redirect('/');
+        }
+        $filtro = $request->input('filtro');
+        $filtro2 = $request->input('filtro2');
+        // Recogemos todos los datos de la tabla restaurantes
+        // $lista=DB::table('restaurante')->get();
+        if ($filtro == "" && $filtro2 == "") {
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
+            FROM restaurante 
+                INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
+                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+                WHERE restaurante.estado = "0"');
+        } else {
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
+            FROM restaurante 
+            INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
+            INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+            WHERE tipo.tipo_cocina LIKE ?
+            AND restaurante.precio_medio LIKE ?
+            AND restaurante.estado = "0"',["%".$filtro."%", "%".$filtro2."%"]);
+        }
+        
+        
+        // Seteamos valor a la foto con base64_encode
+        foreach ($lista as $i ) {
+            if ($i->foto !=null) {
+                $i->foto = base64_encode($i->foto);
+            }
+        }
+
+        // Retorna la vista mostrar con los datos de la variable lista
+        return response()->json($lista ,200);
+    }
+
+    public function alta($id) {
+        //Eliminamos un empleado de la BD, especificando el id
+        DB::table('restaurante')->where('id_restaurante', "=", $id)->update(array('estado'=>'1'));
+        //Volvemos a la vista mostrar
+        return redirect('baja_restaurante');
     }
 }

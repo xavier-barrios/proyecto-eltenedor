@@ -34,6 +34,7 @@ class LoginRegister extends Controller
     public function recibirlogin(Request $request) {
         // Recibir los datos del formulario con el request.
         $datos = $request->except('_token','Entrar');
+        $email = $request->email;
 
         // Verificamos que existe el usuario con los datos aportados
         $pasa = DB::table('usuarios')->where([
@@ -46,15 +47,29 @@ class LoginRegister extends Controller
             ['correo', '=', $datos['email']], 
             ['contra', '=', $datos['password']]
             ])->first();
-
+        
+        $rol = DB::select('SELECT usuarios.rol
+        FROM usuarios
+        WHERE usuarios.correo = ?', [$email]);
+        
         // Si existe el admin, la variable $pasa valdrá 1, entonces entrar en el if
         // de lo contrario pasa por el else y nos redirige al login
-        if($pasa > 0) {
+        
+        if ($pasa > 0) {
             // Establecer sesion y redirigir a la pagina mostrar.
-            // dd($result);
-            session()->put('email_usuario', $request->email);
-            return redirect('home');
-        } else {
+            if ($rol[0]->rol == 'admin') {
+                // Establecer sesion y redirigir a la pagina mostrar.
+                session()->put('email_usuario', $request->email);
+                return redirect('home');
+            }elseif ($rol[0]->rol == 'user') {
+                // Establecer sesion y redirigir a la pagina mostrar.
+                session()->put('email_usuario', $request->email);
+                return redirect('home2');
+            }else {
+                // Redirigir al login
+                return redirect('/');
+            }
+        }else {
             // Redirigir al login
             return redirect('/');
         }
