@@ -10,7 +10,7 @@
     {{-- JS --}}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     {{-- <script src="./js/mostrar.js"></script> --}}
-    <script src="./js/ajax.js"></script>
+    <script src="./js/baja.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Restaurantes</title>
 </head>
@@ -27,15 +27,15 @@
         <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
-        <form class="px-5 mr-auto" method='get' action="{{url('/baja_restaurante')}}">
+        <form class="px-5 mr-auto" method='get' action="{{url('/home')}}">
             <button class="btn btn btn-success" type='submit'><i class="fas fa-user-plus"></i></button>
         </form>
     </div> 
     <div class="container my-auto mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="p-3 panel panel-login">
-                <input type="text" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
-                <input type="text" name="searchPrecio" id="searchPrecio" placeholder="Precio medio €" onkeyup="mostrar()">
+                <input type="text" name="searchCocina" id="searchCocina1" placeholder="Busca tu tipo de cocina" onkeyup="baja()">
+                <input type="text" name="searchPrecio" id="searchPrecio1" placeholder="Precio medio €" onkeyup="baja()">
             </div>
         </div>
     </div>
