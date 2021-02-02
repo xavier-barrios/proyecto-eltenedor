@@ -20,6 +20,7 @@ use App\Http\Controllers\UsuariosController;
 ///////////////////////////////
 // Ruta la cual dirige al home
 Route::get('home', [UsuariosController::class, 'home']);
+Route::get('home2', [UsuariosController::class, 'home2']);
 // Ruta que devuelve los datos a mostrar
 Route::post('mostrar', [UsuariosController::class, 'mostrar']);
 // Ruta que recoge los datos para rellenar el formulario

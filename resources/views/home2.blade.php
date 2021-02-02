@@ -28,9 +28,6 @@
         <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
-        <form class="px-5 mr-auto" method='get' action="{{url('/baja_restaurante')}}">
-            <button class="btn btn btn-success" type='submit'><i class="fas fa-user-plus"></i></button>
-        </form>
     </div> 
     <div class="container my-auto mx-auto">
         <div class="row d-flex justify-content-center">
@@ -40,6 +37,7 @@
             </div>
         </div>
     </div>
+
     <div id="restaurantes" class="restaurantes">
         
     </div>
