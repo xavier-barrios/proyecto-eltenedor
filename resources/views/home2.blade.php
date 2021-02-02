@@ -11,7 +11,7 @@
     {{-- JS --}}
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     {{-- <script src="./js/mostrar.js"></script> --}}
-    <script src="./js/ajax.js"></script>
+    <script src="./js/mostrar.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Restaurantes</title>
 </head>
