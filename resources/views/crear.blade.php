@@ -16,13 +16,13 @@
 <body>
     {{-- NAV --}}
     <div class="d-flex py-3">
-        <form class="px-5 mr-auto" method='get' action="{{url('/home')}}">
+        <form class="px-5 mr-auto" method='get' action="{{url('home')}}">
             <button class="btn btn btn-success" type='submit'><i class="fas fa-arrow-left"></i></button>
         </form>
         
         <h1>Añadir restaurante</h1>
         
-        <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
+        <form class="px-5 ml-auto" method='get' action="{{url('logout')}}">
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
     </div> 
@@ -38,11 +38,15 @@
             </div>
         @endif
         
-        <form action="/crearRestaurante" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
+        <form action="crearRestaurante" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
             @csrf
             <div class="form-group">
                 <label>Nombre</label><br>
                 <input type="text" class="form-control" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Correo</label><br>
+                <input type="text" class="form-control" name="correo" required>
             </div>
             <div class="form-group">
                 <label>Código postal</label><br>

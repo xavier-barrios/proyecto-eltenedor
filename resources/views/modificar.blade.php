@@ -53,6 +53,10 @@
                 <input type="text" class="form-control" name="nombre" value="{{$restaurante->nombre}}" required>
             </div>
             <div class="form-group">
+                <label>Correo</label><br>
+                <input type="text" class="form-control" name="correo" value="{{$restaurante->correo}}" required>
+            </div>
+            <div class="form-group">
                 <label>Código postal</label><br>
                 <input type="text" class="form-control" name="cp" value="{{$restaurante->cp}}" required>    
             </div>

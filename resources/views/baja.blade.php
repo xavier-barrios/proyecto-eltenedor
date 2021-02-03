@@ -18,7 +18,7 @@
     <div class="d-flex py-3 topNav">        
         <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="270px" height="60px" alt="Logo ElTenedor"></a>
         
-        <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
+        <form class="px-5 ml-auto" method='get' action="{{url('logout')}}">
             <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
     </div>

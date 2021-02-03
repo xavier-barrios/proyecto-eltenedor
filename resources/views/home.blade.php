@@ -20,11 +20,11 @@
         <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="270px" height="60px" alt="Logo ElTenedor"></a>
         
         <form class="px-5 ml-auto" method='get' action="{{url('logout')}}">
-            <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
+            <button class="btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
         @if (Session::get('usuario')->rol == "admin")
         <form id="bajaRes" method='get' action="{{url('baja_restaurante')}}">
-            <button class="btn btn btn-success" type='submit'>Restaurantes de baja</button>
+            <button class="btn btn-success" type='submit'>Restaurantes de baja</button>
         </form>
         @endif
     </div> 

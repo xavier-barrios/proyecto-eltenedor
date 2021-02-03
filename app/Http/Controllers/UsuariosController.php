@@ -89,9 +89,9 @@ class UsuariosController extends Controller
             //Traemos el contenido del fichero $img
             $bin = file_get_contents($img);
 
-            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'foto'=>$bin]);
+            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'correo'=>$datos['correo'],'foto'=>$bin]);
         } else {
-            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio']]);
+            DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'correo'=>$datos['correo']]);
         }
 
         //Redirigir a mostrar
@@ -136,7 +136,7 @@ class UsuariosController extends Controller
 
         // Creamos el restaurante en la DB.
         DB::table('restaurante')->insertGetId(['nombre'=>$datos['nombre'],'id_ubicacion'=>$lastID
-        ,'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio']
+        ,'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'correo'=>$datos['correo']
         ,'foto'=>$bin]);
 
         // Una vez creado el alumno hacemos una redireccion a mostrar.
