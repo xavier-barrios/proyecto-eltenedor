@@ -45,6 +45,10 @@
                 <input type="text" class="form-control" name="nombre">
             </div>
             <div class="form-group">
+                <label>Correo</label><br>
+                <input type="text" class="form-control" name="correo" required>
+            </div>
+            <div class="form-group">
                 <label>Código postal</label><br>
                 <input type="text" class="form-control" name="cp">    
             </div>
