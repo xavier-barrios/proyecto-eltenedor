@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/favicon.ico" type="image/png" sizes="16x16">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
