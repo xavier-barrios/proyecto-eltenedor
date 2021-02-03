@@ -14,7 +14,7 @@
     {{-- <script src="./js/mostrar.js"></script> --}}
     <script src="./js/baja.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
-    <title>Restaurantes</title>
+    <title>Restaurantes de baja | El tenedor</title>
 </head>
 <body>
     <div class="d-flex py-3 topNav">        
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group p-1">
                     <label for="searchPrecio" class="m-0 ml-2">Precio</label><br>
-                    <input type="text" class="p-2" name="searchPrecio" id="searchPrecio1" placeholder="Precio medio €" onkeyup="baja()">
+                    <input type="text" class="p-2" name="searchPrecio" id="searchPrecio1" placeholder="Precio medio" onkeyup="baja()">
                 </div>
             </div>
         </div>

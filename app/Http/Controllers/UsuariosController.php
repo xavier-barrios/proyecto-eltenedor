@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\crearRestRequest;
+use App\Http\Requests\modificarRestRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -72,7 +74,7 @@ class UsuariosController extends Controller
     /**
      * Actuliza el usuario especificado por el parametro de entrada (id).
      */
-    public function actualizar(Request $request, $id) {
+    public function actualizar(modificarRestRequest $request, $id) {
         // Recibir los datos del formulario con el request.
         $datos = $request->except('Enviar','_method');
 
@@ -118,7 +120,7 @@ class UsuariosController extends Controller
     /**
      * Recibe los datos del formulario para crear un nuevo empleado
      */
-    public function crearRestaurante(Request $request) {
+    public function crearRestaurante(crearRestRequest $request) {
         // Recogemos todos los datos enviados menos el token y el boton 'Enviar'
         $datos=$request->except('Enviar');
         

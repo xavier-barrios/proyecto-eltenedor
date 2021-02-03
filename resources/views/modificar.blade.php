@@ -29,19 +29,17 @@
     </div> 
 
     {{-- CUERPO --}}
-    <div class="p-5 d-flex">
-        @if ($errors->any())
-        <div class="alert-danger alert-dismissible errors" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        
+    <div class="p-5 d-flex">        
         <form action="{{url('actualizar/'.$restaurante->id_restaurante)}}" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
+            @if ($errors->any())
+            <div class="alert-danger alert-dismissible errors" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @csrf
             {{method_field('PUT')}}
             <h1>{{$restaurante->nombre}}</h1>
@@ -50,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label>Nombre</label><br>
-                <input type="text" class="form-control" name="nombre" value="{{$restaurante->nombre}}" required>
+                <input type="text" class="form-control" name="nombre" value="{{$restaurante->nombre}}">
             </div>
             <div class="form-group">
                 <label>Correo</label><br>
@@ -58,15 +56,15 @@
             </div>
             <div class="form-group">
                 <label>Código postal</label><br>
-                <input type="text" class="form-control" name="cp" value="{{$restaurante->cp}}" required>    
+                <input type="text" class="form-control" name="cp" value="{{$restaurante->cp}}">    
             </div>
             <div class="form-group">
                 <label>Calle</label><br>
-                <input type="text" class="form-control" name="calle" value="{{$restaurante->calle}}" required>    
+                <input type="text" class="form-control" name="calle" value="{{$restaurante->calle}}">    
             </div>
             <div class="form-group">
                 <label>Ciudad</label><br>
-                <input type="text" class="form-control" name="ciudad" value="{{$restaurante->ciudad}}" required>    
+                <input type="text" class="form-control" name="ciudad" value="{{$restaurante->ciudad}}">    
             </div>
             <div class="form-group">
                 <label>Tipo cocina</label><br>
@@ -96,7 +94,7 @@
             </div>
             <div class="form-group">
                 <label>Precio medio</label><br>
-                <input type="number" class="form-control" name="precio_medio" value="{{$restaurante->precio_medio}}" required>    
+                <input type="number" class="form-control" name="precio_medio" value="{{$restaurante->precio_medio}}">    
             </div>
             <div class="form-group">
                 <label for="img">Logo</label><br>
