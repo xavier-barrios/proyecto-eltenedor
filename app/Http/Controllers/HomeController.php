@@ -26,16 +26,8 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    
     public function mostrar(){
-        //comprueba la sesion
-        // if (!session()->has('data')){
-        //     return redirect ('/');
-        // }
-        // coger todos los datos de la tabla restaurantes
-        // $lista=DB::table('restaurante')->get();
-        // return $lista;
-        // hace referencia a $lista y lo encia a mostrarvista
-        // compact -> pasarle mas de una variable a lista
         return view('mostrar', compact('lista'));
     }
 }

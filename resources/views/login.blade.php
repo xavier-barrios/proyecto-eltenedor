@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="{{asset('img/favicon.ico')}}" type="image/png" sizes="16x16">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
@@ -22,8 +23,8 @@
 				<div class="p-3 panel panel-login">
 					<div class="panel-heading p-3">
 						<div class="row d-flex justify-content-around h-100">
-								<a href="#" class="active" id="login-form-link">Login</a>
-								<a href="#" id="register-form-link">Register</a>
+								<a href="#" class="active" id="login-form-link">Entrar</a>
+								<a href="#" id="register-form-link">Registrar</a>
 						</div>
 					</div>
 					<div class="panel-body p-3">
@@ -32,10 +33,13 @@
 								<form id="login-form" action="{{url('recibirlogin')}}" method="GET" role="form" style="display: block;">
                                     @csrf
                                     <div class="form-group">
-										<input type="email" name="email" id="email" class="form-control" placeholder="Username" required>
+										<input type="email" name="email" id="email" class="form-control" placeholder="Correo" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+										<input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
+									</div>
+									<div class="form-group">
+										<p id="msgLogin"></p>
 									</div>
 									<div class="form-group">
 										<div class="row d-flex justify-content-center">
@@ -45,19 +49,22 @@
 										</div>
 									</div>
 								</form>
-								<form id="register-form" action="{{url('recibirregistrar')}}" method="GET" role="form" style="display: none;">
+								<form id="register-form" action="{{url('recibir')}}" onsubmit="return validarPass();" method="POST" role="form" style="display: none;">
                                     @csrf
                                     <div class="form-group">
-										<input type="text" name="usernameRegister" id="usernameRegister" class="form-control" placeholder="Username" required>
+										<input type="text" name="usernameRegister" id="usernameRegister" class="form-control" placeholder="Nombre" required>
 									</div>
 									<div class="form-group">
-										<input type="email" name="emailRegister" id="emailRegister" class="form-control" placeholder="Email Address" required>
+										<input type="email" name="emailRegister" id="emailRegister" class="form-control" placeholder="Correo" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="passwordRegister" id="passwordRegister" class="form-control" placeholder="Password" required>
+										<input type="password" name="passwordRegister" id="passwordRegister" class="form-control" placeholder="Contraseña" required>
 									</div>
 									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirm Password" required>
+										<input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirma contraseña" required>
+									</div>
+									<div class="form-group">
+										<p id="msg"></p>
 									</div>
 									<div class="form-group">
 										<div class="row d-flex justify-content-center">
