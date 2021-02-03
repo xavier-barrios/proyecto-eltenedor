@@ -14,7 +14,7 @@
     {{-- <script src="./js/mostrar.js"></script> --}}
     <script src="./js/ajax.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
-    <title>Restaurantes</title>
+    <title>Inicio | El tenedor</title>
 </head>
 <body>
     <div class="d-flex py-3 topNav">

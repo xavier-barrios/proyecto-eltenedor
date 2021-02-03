@@ -28,34 +28,33 @@
         </form>
     </div> 
     {{-- CUERPO --}}
-    <div class="p-5 d-flex">
-        @if ($errors->any())
-        <div class="alert-danger alert-dismissible errors" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        
+    <div class="p-5 d-flex">        
         <form action="crearRestaurante" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
+            @if ($errors->any())
+                <div class="alert-danger alert-dismissible errors" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @csrf
             <div class="form-group">
                 <label>Nombre</label><br>
-                <input type="text" class="form-control" name="nombre" required>
+                <input type="text" class="form-control" name="nombre">
             </div>
             <div class="form-group">
                 <label>Código postal</label><br>
-                <input type="text" class="form-control" name="cp" required>    
+                <input type="text" class="form-control" name="cp">    
             </div>
             <div class="form-group">
                 <label>Calle</label><br>
-                <input type="text" class="form-control" name="calle" required>    
+                <input type="text" class="form-control" name="calle">    
             </div>
             <div class="form-group">
                 <label>Ciudad</label><br>
-                <input type="text" class="form-control" name="ciudad" required>    
+                <input type="text" class="form-control" name="ciudad">    
             </div>
             <div class="form-group">
                 <label>Tipo cocina</label><br>
@@ -68,7 +67,7 @@
             </div>
             <div class="form-group">
                 <label>Precio medio</label><br>
-                <input type="number" class="form-control" name="precio_medio" required>    
+                <input type="number" class="form-control" name="precio_medio">    
             </div>
             <div class="form-group">
                 <label for="img">Logo</label><br>
