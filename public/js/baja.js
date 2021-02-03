@@ -35,9 +35,9 @@ function baja() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             var tabla = '';
-            tabla += '<div class="row d-flex">';
+            tabla += '<div class="row contenidoCartas">';
             for (let i = 0; i < respuesta.length; i++) {
-                tabla += '<div class="col-3 p-1">';
+                tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-1">';
                 tabla += '<div class="card d-flex text-white bg-cards">';
                 tabla += '<img class="card-img-top img-fluid mx-auto pt-2 imgCard" style="width: 250px; height: 215px;" src="data:image/png;base64,' + respuesta[i].foto + '" alt="Card image cap"></img>';
                 tabla += '<div class="card-body">';

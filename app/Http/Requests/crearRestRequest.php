@@ -25,6 +25,7 @@ class crearRestRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
+            'correo' => 'required',
             'cp' => 'required|max:5',
             'calle' => 'required',
             'ciudad' => 'required',

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon.ico" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{asset('img/favicon.ico')}}" type="image/png" sizes="16x16">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -17,10 +17,10 @@
     <title>Inicio | El tenedor</title>
 </head>
 <body>
-    <div class="d-flex py-3 topNav">
-        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="270px" height="60px" alt="Logo ElTenedor"></a>
+    <div class="container-fluid d-flex topNav p-3 fixed-top">
+        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="mr-auto" width="215px" height="78px" alt="Logo ElTenedor"></a>
         
-        <form class="px-5 ml-auto" method='get' action="{{url('logout')}}">
+        <form id="logout" class="ml-auto" method='get' action="{{url('logout')}}">
             <button class="btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
         @if (Session::get('usuario')->rol == "admin")
@@ -30,30 +30,40 @@
         @endif
     </div> 
     
-    <div>
-        <div class="d-flex justify-content-between mt-5 mb-3 margin">
-            @if (Session::get('usuario'))
-            <h1>Bienvenido {{Session::get('usuario')->nombre}}</h1>
-            @else
-            <h1>Bienvenido!</h1>
-            @endif
-            <input type="hidden" value="{{Session::get('usuario')->rol}}" id="rol"> 
-            <div class="p-3 panel panel-login d-flex">
-                <div class="form-group p-1">
-                    <label for="searchCocina" class="m-0 ml-2">Tipo comida</label><br>
-                    <input type="text" class="p-2" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
-                </div>
-                <div class="form-group p-1">
-                    <label for="searchPrecio" class="m-0 ml-2">Precio</label><br>
-                    <input type="text" class="p-2" name="searchPrecio" id="searchPrecio" placeholder="Precio medio" onkeyup="mostrar()">
+    <div class="divAux"></div>
+
+    <div class="container-fluid">
+        <div class="row text-center contenidoCartas">
+            
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                @if (Session::get('usuario'))
+                <h1 class="bienv m-auto">Bienvenido {{Session::get('usuario')->nombre}}</h1>
+                @else
+                <h1 class="bienv m-auto">Bienvenido!</h1>
+                @endif
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                <input type="hidden" value="{{Session::get('usuario')->rol}}" id="rol"> 
+                <div class="panel m-auto">
+                    <div class="container-fluid form-group p-1">
+                        <label for="searchCocina" class="m-0 ml-2">Tipo comida</label><br>
+                        <input type="text" class="p-2" name="searchCocina" id="searchCocina" placeholder="Busca tu tipo de cocina" onkeyup="mostrar()">
+                    </div>
+                    <div class="container-fluid form-group p-1">
+                        <label for="searchPrecio" class="m-0 ml-2">Precio</label><br>
+                        <input type="text" class="p-2" name="searchPrecio" id="searchPrecio" placeholder="Precio medio" onkeyup="mostrar()">
+                    </div>
                 </div>
             </div>
+
         </div>
         
-        <div id="restaurantes" class="margin p-2">
+        <div id="restaurantes">
         
         </div>
     </div>
+</div>
     
 
 </body>

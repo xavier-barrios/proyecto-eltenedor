@@ -1,115 +1,97 @@
-    .bg-cards {
-        background-color: #414549b9;
+/* TOP NAV */
+
+.topNav {
+    -webkit-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
+    -moz-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
+    box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
+    background-color: white;
+}
+
+#logout {
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.divAux {
+    height: 15vh;
+}
+
+
+/* CARTAS */
+
+.bg-cards {
+    background-color: #414549b9;
+}
+
+@media (max-width: 1377px) {
+    .contenidoCartas {
+        padding-left: 10%;
+        padding-right: 10%;
     }
-    
-    .topNav {
-        -webkit-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
-        -moz-box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
-        box-shadow: 0px 6px 26px -1px rgba(0, 0, 0, 0.46);
-        background-color: white;
+}
+
+@media (min-width: 992px) {
+    .contenidoCartas {
+        padding-left: 18%;
+        padding-right: 18%;
     }
-    
-    label {
-        font-size: 9px;
+}
+
+@media (max-width: 992px) {
+    .contenidoCartas {
+        padding-left: 10%;
+        padding-right: 10%;
     }
-    
-    #bajaRes {
-        position: fixed!important;
-        top: 285px;
-        left: -75px;
-        transform: rotate(-90deg);
+}
+
+
+/* BOTON VER BAJAS */
+
+#bajaRes {
+    position: fixed!important;
+    top: 285px;
+    left: -75px;
+    transform: rotate(-90deg);
+}
+
+#bajaRes button {
+    font-size: 17px;
+}
+
+
+/* FILTROS */
+
+@media (max-width: 768px) {
+    .bienv {
+        font-size: 34px;
+        padding-bottom: 15px!important;
     }
-    
-    #bajaRes button {
-        font-size: 17px;
-    }
-    
-    form,
-    h1 {
-        height: fit-content;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-    
-    .margin {
-        margin-left: 15%;
-        margin-right: 15%;
-    }
-    
-    .panel-login {
-        background-color: #ffffff60;
-        -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-        -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-        box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
-    }
-    
-    .panel-login>.panel-heading {
-        color: #00415d;
-        border-color: black;
-        text-align: center;
-    }
-    
-    .panel-login>.panel-heading a {
-        text-decoration: none;
-        color: rgb(116, 116, 116);
-        font-weight: bold;
-        font-size: 20px;
-        -webkit-transition: all 0.1s linear;
-        -moz-transition: all 0.1s linear;
-        transition: all 0.1s linear;
-    }
-    
-    .panel-login>.panel-heading a.active {
-        color: #1CB94E;
-        font-size: 27px;
-    }
-    
-    .panel-login input[type="text"],
-    .panel-login input[type="email"],
-    .panel-login input[type="password"] {
-        height: 45px;
-        border: 1px solid #ddd;
-        font-size: 16px;
-        -webkit-transition: all 0.1s linear;
-        -moz-transition: all 0.1s linear;
-        transition: all 0.1s linear;
-    }
-    
-    .panel-login input:hover,
-    .panel-login input:focus {
-        outline: none;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-        border-color: #ccc;
-    }
-    
-    @media (max-width: 376px) {
-        body {
-            width: fit-content;
-        }
-        .imgCard {
-            width: 140px!important;
-            height: 140px!important;
-        }
-        .card-title {
-            font-size: 15px;
-            font-weight: bold;
-        }
-        .card-text {
-            font-size: 12px;
-        }
-        .col-3 {
-            max-width: 50%!important;
-        }
-        .w-75 {
-            width: 95%!important;
-        }
-        .btn {
-            font-size: 12px;
-            padding: 2px 8px 2px 8px;
-        }
-        h1 {
-            text-align: center;
-        }
-    }
+}
+
+label {
+    font-size: 9px;
+}
+
+.panel {
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px!important;
+}
+
+.panel input[type="text"] {
+    border: 1px solid #ddd;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.panel input:hover,
+.panel input:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #ccc;
+}
