@@ -22,6 +22,7 @@
 
 .bg-cards {
     background-color: #414549b9;
+    overflow: hidden;
 }
 
 @media (max-width: 1377px) {
@@ -43,6 +44,21 @@
         padding-left: 10%;
         padding-right: 10%;
     }
+}
+
+.mg {
+    position: absolute;
+    top: 235px;
+    right: -28px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.425);
+    border: 1px solid black;
+}
+
+.mg:hover {
+    transform: translateX(-29px);
+    transition: all .4s ease-in-out;
 }
 
 

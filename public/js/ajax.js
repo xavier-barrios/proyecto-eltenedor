@@ -52,6 +52,7 @@ function mostrar() {
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-1">';
                 tabla += '<div class="card d-flex text-white bg-cards">';
+                tabla += '<span class="mg" type="submit"><i class="fa fa-thumbs-up"></i></span>';
                 tabla += '<img class="card-img-top img-fluid mx-auto pt-2 imgCard" style="width: 250px; height: 215px;" src="data:image/png;base64,' + respuesta[i].foto + '" alt="Card image cap"></img>';
                 tabla += '<div class="card-body">';
                 tabla += '<h2 class="card-title">' + respuesta[i].nombre + '</h2>';
