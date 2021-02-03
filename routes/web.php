@@ -35,9 +35,9 @@ Route::post('mostrarbaja', [UsuariosController::class, 'mostrarbaja']);
 // Ruta para dar de baja el restaurante
 Route::get('alta/{id}', [UsuariosController::class,'alta']);
 // Ruta para mostrar vista crear
-Route::get('/crear', [UsuariosController::class, 'crear']);
+Route::get('crear', [UsuariosController::class, 'crear']);
 // Ruta para añadir restaurante
-Route::post('/crearRestaurante', [UsuariosController::class, 'crearRestaurante']);
+Route::post('crearRestaurante', [UsuariosController::class, 'crearRestaurante']);
 
 ///////////////////////////////
 //////// LoginRegister ////////
