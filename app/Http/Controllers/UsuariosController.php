@@ -98,6 +98,19 @@ class UsuariosController extends Controller
             DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'correo'=>$datos['correo']]);
         }
 
+        $asunto = "Hola buenas tardes";
+        $mensaje = "Me cago en toda tu puta madre";
+        $email=array(
+            // 'name' => $request->input('name'),
+            // 'content' => $request->input('content')
+            'name'=>$asunto,
+            'content'=>$mensaje
+        );
+
+        $correo=$datos['correo'];
+
+        Mail::to($correo)->send(new Email($email));
+
         //Redirigir a mostrar
         return redirect('home');
     }

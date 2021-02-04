@@ -103,8 +103,9 @@
                 <input type="file" id="img" name="img" accept=".gif, .png, .jpg, .jpeg" value="{{$restaurante->foto}}">
             </div>
             <div class="form-group">
-                <input type="submit" class="form-control btn-success" name="Enviar" value="Enviar" onclick="correo()">
+                <input type="submit" class="form-control btn-success" name="Enviar" value="Enviar">
             </div>
+            
         </form>
         
     </div>
