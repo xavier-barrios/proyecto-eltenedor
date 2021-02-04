@@ -98,8 +98,8 @@ class UsuariosController extends Controller
             DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'correo'=>$datos['correo']]);
         }
 
-        $asunto = "Hola buenas tardes";
-        $mensaje = "Me cago en toda tu puta madre";
+        $asunto = "Estimado cliente su restaurante ha sido actualizado";
+        $mensaje = "Estimado cliente, gracias por confiar en ElTenedor. Le informamos que su restaurante ha sido modificado. Un saludo";
         $email=array(
             // 'name' => $request->input('name'),
             // 'content' => $request->input('content')

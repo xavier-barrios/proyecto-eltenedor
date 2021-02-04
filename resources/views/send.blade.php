@@ -8,7 +8,7 @@
 <body>
 
     <h2>{{$email['name']}}</h2>
-    <h2>{{$email['content']}}</h2>
+    <p>{{$email['content']}}</p>
     
 </body>
 </html>
