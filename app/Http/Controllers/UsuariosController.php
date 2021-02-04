@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\crearRestRequest;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\modificarRestRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\Email;
 
 class UsuariosController extends Controller
 {
