@@ -36,22 +36,25 @@ function mostrar() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(ajax.responseText);
             var tabla = '';
-            tabla += '<div class="row d-flex">';
+            tabla += '<div class="row contenidoCartas">';
 
-            tabla += '<div class="col-3 p-1">';
-            tabla += '<div class="card d-flex text-white bg-transparent h-100">';
-            tabla += '<div class="card-body">';
-            tabla += '<form class="px-5 d-flex justify-content-center h-100" method="get" action="crear">'
-            tabla += '<button class="btn" type="submit"><img class="card-img-top img-fluid mx-auto pt-2 imgCard" style="width: 35%; height: auto" src="img/add.png" alt="Card image cap"></img></button>';
-            tabla += '</form>'
-            tabla += '</div>';
-            tabla += '</div>';
-            tabla += '</div>';
+            if (rol == 'admin') {
+                tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-1">';
+                tabla += '<div class="card d-flex text-white bg-transparent h-100">';
+                tabla += '<div class="card-body">';
+                tabla += '<form class="px-5 d-flex justify-content-center h-100" method="get" action="crear">'
+                tabla += '<button class="btn" type="submit"><img class="card-img-top img-fluid mx-auto pt-2 imgCard" src="img/add.png" alt="Card image cap"></img></button>';
+                tabla += '</form>'
+                tabla += '</div>';
+                tabla += '</div>';
+                tabla += '</div>';
+            }
 
 
             for (let i = 0; i < respuesta.length; i++) {
-                tabla += '<div class="col-3 p-1">';
+                tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-1">';
                 tabla += '<div class="card d-flex text-white bg-cards">';
+                tabla += '<span class="mg" type="submit"><i class="fa fa-thumbs-up"></i></span>';
                 tabla += '<img class="card-img-top img-fluid mx-auto pt-2 imgCard" style="width: 250px; height: 215px;" src="data:image/png;base64,' + respuesta[i].foto + '" alt="Card image cap"></img>';
                 tabla += '<div class="card-body">';
                 tabla += '<h2 class="card-title">' + respuesta[i].nombre + '</h2>';

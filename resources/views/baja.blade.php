@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon.ico" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{asset('img/favicon.ico')}}" type="image/png" sizes="16x16">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -17,28 +17,36 @@
     <title>Restaurantes de baja | El tenedor</title>
 </head>
 <body>
-    <div class="d-flex py-3 topNav">        
-        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="270px" height="60px" alt="Logo ElTenedor"></a>
+    <div class="container-fluid d-flex topNav p-3 fixed-top">
+        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="mr-auto" width="215px" height="78px" alt="Logo ElTenedor"></a>
         
-        <form class="px-5 ml-auto" method='get' action="{{url('logout')}}">
-            <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
+        <form id="logout" class="ml-auto" method='get' action="{{url('logout')}}">
+            <button class="btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
-    </div>
+    </div> 
 
-    <div>
-        <div class="d-flex justify-content-between mt-5 mb-3 margin">
-            <h1>Restaurantes dados de baja</h1>
-            <div class="p-3 panel panel-login d-flex">
-                <div class="form-group p-1">
-                    <label for="searchCocina" class="m-0 ml-2">Tipo comida</label><br>
+    <div class="divAux"></div>
+
+    <div class="container-fluid">
+        <div class="row text-center contenidoCartas">
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                <h1 class="bienv m-auto">Restaurantes dados de baja</h1>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
+                <div class="panel m-auto">
+                    <div class="container-fluid form-group p-1">
+                        <label for="searchCocina" class="m-0 ml-2">Tipo comida</label><br>
                     <input type="text" class="p-2" name="searchCocina" id="searchCocina1" placeholder="Busca tu tipo de cocina" onkeyup="baja()">
-                </div>
-                <div class="form-group p-1">
-                    <label for="searchPrecio" class="m-0 ml-2">Precio</label><br>
-                    <input type="text" class="p-2" name="searchPrecio" id="searchPrecio1" placeholder="Precio medio" onkeyup="baja()">
+                    </div>
+                    <div class="container-fluid form-group p-1">
+                        <label for="searchPrecio" class="m-0 ml-2">Precio</label><br>
+                        <input type="text" class="p-2" name="searchPrecio" id="searchPrecio1" placeholder="Precio medio" onkeyup="baja()">
+                    </div>
                 </div>
             </div>
         </div>
+
         <div id="restaurantes" class="margin">
             
         </div>

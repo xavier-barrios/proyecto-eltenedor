@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon.ico" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{asset('img/favicon.ico')}}" type="image/png" sizes="16x16">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -15,22 +15,24 @@
     <title>Actualizar restaurante | El tenedor</title>
 </head>
 <body>
-    <div class="d-flex py-3 topNav">
-        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="px-5 mr-auto" width="270px" height="60px" alt="Logo ElTenedor"></a>
+    <div class="container-fluid d-flex topNav p-3 fixed-top">
+        <a href="{{asset('home')}}"><img src="{{asset('img/banner.png')}}" class="mr-auto" width="215px" height="78px" alt="Logo ElTenedor"></a>
         
-        <form class="px-5 ml-auto" method='get' action="{{url('/logout')}}">
-            <button class="btn btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
+        <form id="logout" class="ml-auto" method='get' action="{{url('logout')}}">
+            <button class="btn btn-danger" type='submit'><i class="fas fa-sign-out-alt"></i></button>
         </form>
         @if (Session::get('usuario')->rol == "admin")
-        <form id="bajaRes" method='get' action="{{url('/baja_restaurante')}}">
-            <button class="btn btn btn-success" type='submit'>Restaurantes de baja</button>
+        <form id="bajaRes" method='get' action="{{url('baja_restaurante')}}">
+            <button class="btn btn-success" type='submit'>Restaurantes de baja</button>
         </form>
         @endif
-    </div> 
+    </div>
+
+    <div class="divAux"></div>
 
     {{-- CUERPO --}}
-    <div class="p-5 d-flex">        
-        <form action="{{url('actualizar/'.$restaurante->id_restaurante)}}" method="POST" enctype="multipart/form-data" class="w-50 m-auto">
+    <div class="container-fluid d-flex">     
+        <form action="{{url('actualizar/'.$restaurante->id_restaurante)}}" method="POST" enctype="multipart/form-data" class="m-auto">
             @if ($errors->any())
             <div class="alert-danger alert-dismissible errors" role="alert">
                     <ul>
