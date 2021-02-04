@@ -51,11 +51,14 @@ function mostrar() {
                 tabla += '</div>';
             }
 
-
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-2">';
                 tabla += '<div class="card d-flex text-black bg-cards">';
-                tabla += '<form class="w-auto m-2" method="POST" action="mg/' + respuesta[i].id_restaurante + '"><input type="hidden" value="' + id_usuario + '" id="id_usuario" name="id_usuario"><span class="mg" type="submit"><button class="btn btn-primary" type="sumbit" name="Enviar"><i class="fa fa-thumbs-up"></i></button></span></form>';
+                if (respuesta[i].id_restauranteMg != null && respuesta[i].id_usuarioMg) {
+                    tabla += '<form class="w-auto m-2" method="POST" action="deleteMg/' + respuesta[i].id_restaurante + '"><input type="hidden" value="' + id_usuario + '" id="id_usuario" name="id_usuario"><span class="mg" type="submit"><button class="btn btn-success" type="sumbit" name="Enviar"><i class="fa fa-thumbs-up"></i></button></span></form>';
+                } else {
+                    tabla += '<form class="w-auto m-2" method="POST" action="mg/' + respuesta[i].id_restaurante + '"><input type="hidden" value="' + id_usuario + '" id="id_usuario" name="id_usuario"><span class="mg" type="submit"><button class="btn btn-primary" type="sumbit" name="Enviar"><i class="fa fa-thumbs-up"></i></button></span></form>';
+                }
                 tabla += '<img class="card-img-top img-fluid mx-auto imgCard" style="width: 100%; height: 280px;" src="data:image/png;base64,' + respuesta[i].foto + '" alt="Card image cap"></img>';
                 tabla += '<div class="card-body">';
                 tabla += '<h2 class="card-title text-truncate">' + respuesta[i].nombre + '</h2>';

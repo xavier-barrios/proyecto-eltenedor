@@ -33,18 +33,18 @@ class UsuariosController extends Controller
         // Recogemos todos los datos de la tabla restaurantes
         // $lista=DB::table('restaurante')->get();
         if ($filtro == "" && $filtro2 == "") {
-            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*, mg.*
             FROM restaurante 
-                INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
-                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
-                INNER JOIN mg ON restaurante.id_restaurante = mg.id_restaurante
+                LEFT JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
+                LEFT JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+                LEFT JOIN mg ON restaurante.id_restaurante = mg.id_restauranteMg
                 WHERE restaurante.estado = "1"');
         } else {
-            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*, mg.*
             FROM restaurante 
-            INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
-            INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
-            INNER JOIN mg ON restaurante.id_restaurante = mg.id_restaurante
+            LEFT JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
+            LEFT JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+            LEFT JOIN mg ON restaurante.id_restaurante = mg.id_restauranteMg
             WHERE tipo.tipo_cocina LIKE ?
             AND restaurante.precio_medio LIKE ?
             AND restaurante.estado = "1"',["%".$filtro."%", "%".$filtro2."%"]);
@@ -216,7 +216,19 @@ class UsuariosController extends Controller
         $datos=$request->except('Enviar');
 
         // Creamos la ubicacion en la DB.
-        DB::table('mg')->insertGetId(['id_restaurante'=>$id_restaurante,'id_usuario'=>$datos['id_usuario']]);
+        DB::table('mg')->insertGetId(['id_restauranteMg'=>$id_restaurante,'id_usuarioMg'=>$datos['id_usuario']]);
+
+        return redirect("home");
+    }
+
+    // delete MG
+    public function deleteMg($id_restaurante, Request $request) {
+        // Recogemos todos los datos enviados menos el token y el boton 'Enviar'
+        $datos=$request->except('Enviar');
+
+        // Creamos la ubicacion en la DB.
+        // DB::select('mg')->where('id_restauranteMg', "=", $id_restaurante)->delete();
+        // DB::table('mg')->where(['id_restauranteMg'=>$id_restaurante,'id_usuarioMg'=>$datos['id_usuario']]);
 
         return redirect("home");
     }
