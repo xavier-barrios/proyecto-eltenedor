@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\registerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -78,7 +79,7 @@ class LoginRegister extends Controller
     /**
      * Recibe los datos del formulario para crear un nuevo usuario
      */
-    public function recibir(Request $request) {
+    public function recibir(registerRequest $request) {
         // Recogemos todos los datos enviados menos el token y el boton 'Registrar'
         $datos=$request->except('Registrar');
         

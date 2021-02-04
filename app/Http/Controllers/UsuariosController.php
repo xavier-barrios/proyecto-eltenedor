@@ -37,12 +37,14 @@ class UsuariosController extends Controller
             FROM restaurante 
                 INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
                 INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+                INNER JOIN mg ON restaurante.id_restaurante = mg.id_restaurante
                 WHERE restaurante.estado = "1"');
         } else {
             $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
             FROM restaurante 
             INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
             INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+            INNER JOIN mg ON restaurante.id_restaurante = mg.id_restaurante
             WHERE tipo.tipo_cocina LIKE ?
             AND restaurante.precio_medio LIKE ?
             AND restaurante.estado = "1"',["%".$filtro."%", "%".$filtro2."%"]);
@@ -206,5 +208,16 @@ class UsuariosController extends Controller
         DB::table('restaurante')->where('id_restaurante', "=", $id)->update(array('estado'=>'1'));
         //Volvemos a la vista mostrar
         return redirect('baja_restaurante');
+    }
+
+    // MG
+    public function mg($id_restaurante, Request $request) {
+        // Recogemos todos los datos enviados menos el token y el boton 'Enviar'
+        $datos=$request->except('Enviar');
+
+        // Creamos la ubicacion en la DB.
+        DB::table('mg')->insertGetId(['id_restaurante'=>$id_restaurante,'id_usuario'=>$datos['id_usuario']]);
+
+        return redirect("home");
     }
 }

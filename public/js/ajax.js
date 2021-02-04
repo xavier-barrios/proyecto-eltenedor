@@ -22,6 +22,7 @@ function objetoAjax() {
 function mostrar() {
     var restaurantes = document.getElementById('restaurantes');
     var rol = document.getElementById('rol').value;
+    var id_usuario = document.getElementById('id_usuario').value;
     var buscador = document.getElementById('searchCocina').value;
     var buscador2 = document.getElementById('searchPrecio').value;
     var ajax = new objetoAjax();
@@ -39,11 +40,11 @@ function mostrar() {
             tabla += '<div class="row contenidoCartas">';
 
             if (rol == 'admin') {
-                tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-1">';
-                tabla += '<div class="card d-flex text-white bg-transparent h-100">';
+                tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-2">';
+                tabla += '<div class="card d-flex text-black h-100 bg-cards">';
                 tabla += '<div class="card-body">';
                 tabla += '<form class="px-5 d-flex justify-content-center h-100" method="get" action="crear">'
-                tabla += '<button class="btn" type="submit"><img class="card-img-top img-fluid mx-auto pt-2 imgCard" src="img/add.png" alt="Card image cap"></img></button>';
+                tabla += '<button class="btn" type="submit"><img class="card-img-top img-fluid mx-auto imgCard" src="img/add.png" alt="Card image cap"></img></button>';
                 tabla += '</form>'
                 tabla += '</div>';
                 tabla += '</div>';
@@ -52,15 +53,15 @@ function mostrar() {
 
 
             for (let i = 0; i < respuesta.length; i++) {
-                tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-1">';
-                tabla += '<div class="card d-flex text-white bg-cards">';
-                tabla += '<span class="mg" type="submit"><i class="fa fa-thumbs-up"></i></span>';
-                tabla += '<img class="card-img-top img-fluid mx-auto pt-2 imgCard" style="width: 250px; height: 215px;" src="data:image/png;base64,' + respuesta[i].foto + '" alt="Card image cap"></img>';
+                tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-2">';
+                tabla += '<div class="card d-flex text-black bg-cards">';
+                tabla += '<form class="w-auto m-2" method="POST" action="mg/' + respuesta[i].id_restaurante + '"><input type="hidden" value="' + id_usuario + '" id="id_usuario" name="id_usuario"><span class="mg" type="submit"><button class="btn btn-primary" type="sumbit" name="Enviar"><i class="fa fa-thumbs-up"></i></button></span></form>';
+                tabla += '<img class="card-img-top img-fluid mx-auto imgCard" style="width: 100%; height: 280px;" src="data:image/png;base64,' + respuesta[i].foto + '" alt="Card image cap"></img>';
                 tabla += '<div class="card-body">';
-                tabla += '<h2 class="card-title">' + respuesta[i].nombre + '</h2>';
-                tabla += '<p class="card-text text-truncate">Dirección: ' + respuesta[i].ciudad + ', ' + respuesta[i].calle + ', ' + respuesta[i].cp + '</p>';
-                tabla += '<p class="card-text text-truncate">Tipo cocina: ' + respuesta[i].tipo_cocina + '</p>';
-                tabla += '<p class="card-text text-truncate">Precio: ' + respuesta[i].precio_medio + '€</p>';
+                tabla += '<h2 class="card-title text-truncate">' + respuesta[i].nombre + '</h2>';
+                tabla += '<p class="card-text text-truncate"><b>Dirección:</b> ' + respuesta[i].ciudad + ', ' + respuesta[i].calle + ', ' + respuesta[i].cp + '</p>';
+                tabla += '<p class="card-text text-truncate"><b>Tipo cocina:</b> ' + respuesta[i].tipo_cocina + '</p>';
+                tabla += '<p class="card-text text-truncate"><b>Precio:</b> ' + respuesta[i].precio_medio + '€</p>';
                 tabla += '</div>';
 
                 if (rol == 'admin') {
