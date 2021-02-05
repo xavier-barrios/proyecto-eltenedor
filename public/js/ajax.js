@@ -1,5 +1,6 @@
 window.onload = function() {
     mostrar();
+    var IDs = [];
 }
 
 function objetoAjax() {
@@ -18,6 +19,7 @@ function objetoAjax() {
     }
     return xmlhttp;
 }
+
 
 function mostrar() {
     var restaurantes = document.getElementById('restaurantes');

@@ -51,7 +51,6 @@ class UsuariosController extends Controller
             AND restaurante.estado = "1"',["%".$filtro."%", "%".$filtro2."%"]);
         }
         
-        
         // Seteamos valor a la foto con base64_encode
         foreach ($lista as $i ) {
             if ($i->foto !=null) {
