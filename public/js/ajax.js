@@ -50,7 +50,6 @@ function mostrar() {
                 tabla += '</div>';
                 tabla += '</div>';
             }
-
             for (let i = 0; i < respuesta.length; i++) {
                 tabla += '<div class="col-sm-12 col-md-6 col-lg-3 p-2">';
                 tabla += '<div class="card d-flex text-black bg-cards">';
