@@ -50,7 +50,16 @@
 									</div>
 								</form>
 								<form id="register-form" action="{{url('recibir')}}" onsubmit="return validarPass();" method="POST" role="form" style="display: none;">
-                                    @csrf
+									@if ($errors->any())
+										<div class="alert-danger alert-dismissible errors" role="alert">
+											<ul>
+												@foreach ($errors->all() as $error)
+													<li>{{ $error }}</li>
+												@endforeach
+											</ul>
+										</div>
+									@endif
+									@csrf
                                     <div class="form-group">
 										<input type="text" name="usernameRegister" id="usernameRegister" class="form-control" placeholder="Nombre" required>
 									</div>

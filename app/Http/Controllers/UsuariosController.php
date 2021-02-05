@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\crearRestRequest;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\modificarRestRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\Email;
 
 class UsuariosController extends Controller
 {
@@ -31,21 +33,23 @@ class UsuariosController extends Controller
         // Recogemos todos los datos de la tabla restaurantes
         // $lista=DB::table('restaurante')->get();
         if ($filtro == "" && $filtro2 == "") {
-            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*, mg.*
             FROM restaurante 
-                INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
-                INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+                LEFT JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
+                LEFT JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+                LEFT JOIN mg ON restaurante.id_restaurante = mg.id_restauranteMg
                 WHERE restaurante.estado = "1"');
+                // GROUP BY restaurante.id_restaurante
         } else {
-            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*
+            $lista = DB::select('SELECT restaurante.*, tipo.tipo_cocina, ubicacion.*, mg.*
             FROM restaurante 
-            INNER JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
-            INNER JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+            LEFT JOIN tipo ON restaurante.id_tipo = tipo.id_tipo 
+            LEFT JOIN ubicacion ON restaurante.id_ubicacion = ubicacion.id_ubicacion
+            LEFT JOIN mg ON restaurante.id_restaurante = mg.id_restauranteMg
             WHERE tipo.tipo_cocina LIKE ?
             AND restaurante.precio_medio LIKE ?
             AND restaurante.estado = "1"',["%".$filtro."%", "%".$filtro2."%"]);
         }
-        
         
         // Seteamos valor a la foto con base64_encode
         foreach ($lista as $i ) {
@@ -95,6 +99,19 @@ class UsuariosController extends Controller
         } else {
             DB::table('restaurante')->where('id_restaurante','=',$id)->update(['nombre'=>$datos['nombre'],'id_tipo'=>$datos['tipoCocina'],'precio_medio'=>$datos['precio_medio'],'correo'=>$datos['correo']]);
         }
+
+        $asunto = "Estimado cliente su restaurante ha sido actualizado";
+        $mensaje = "Estimado cliente, gracias por confiar en ElTenedor. Le informamos que su restaurante ha sido modificado. Un saludo";
+        $email=array(
+            // 'name' => $request->input('name'),
+            // 'content' => $request->input('content')
+            'name'=>$asunto,
+            'content'=>$mensaje
+        );
+
+        $correo=$datos['correo'];
+
+        Mail::to($correo)->send(new Email($email));
 
         //Redirigir a mostrar
         return redirect('home');
@@ -191,5 +208,27 @@ class UsuariosController extends Controller
         DB::table('restaurante')->where('id_restaurante', "=", $id)->update(array('estado'=>'1'));
         //Volvemos a la vista mostrar
         return redirect('baja_restaurante');
+    }
+
+    // MG
+    public function mg($id_restaurante, Request $request) {
+        // Recogemos todos los datos enviados menos el token y el boton 'Enviar'
+        $datos=$request->except('Enviar');
+
+        // Creamos la ubicacion en la DB.
+        DB::table('mg')->insertGetId(['id_restauranteMg'=>$id_restaurante,'id_usuarioMg'=>$datos['id_usuario']]);
+
+        return redirect("home");
+    }
+
+    // delete MG
+    public function deleteMg($id_restaurante, Request $request) {
+        // Recogemos todos los datos enviados menos el token y el boton 'Enviar'
+        $datos=$request->except('Enviar');
+
+        // Creamos la ubicacion en la DB.
+        DB::table('mg')->where('id_restauranteMg', "=", $id_restaurante)->where('id_usuarioMg', "=", $datos['id_usuario'])->delete();
+
+        return redirect("home");
     }
 }

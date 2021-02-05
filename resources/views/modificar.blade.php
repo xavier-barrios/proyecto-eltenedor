@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label>Correo</label><br>
-                <input type="text" class="form-control" name="correo" value="{{$restaurante->correo}}" required>
+                <input type="text" class="form-control" name="correo" id="correo" value="{{$restaurante->correo}}" required>
             </div>
             <div class="form-group">
                 <label>Código postal</label><br>
@@ -99,12 +99,13 @@
                 <input type="number" class="form-control" name="precio_medio" value="{{$restaurante->precio_medio}}">    
             </div>
             <div class="form-group">
-                <label for="img">Logo</label><br>
-                <input type="file" id="img" name="img" accept=".gif, .png, .jpg, .jpeg" value="{{$restaurante->foto}}">
+                <label for="img">Logo<br>
+                <input type="file" class="btn btn-default" id="img" name="img" accept=".gif, .png, .jpg, .jpeg" value="{{$restaurante->foto}}">
             </div>
             <div class="form-group">
                 <input type="submit" class="form-control btn-success" name="Enviar" value="Enviar">
             </div>
+            
         </form>
         
     </div>

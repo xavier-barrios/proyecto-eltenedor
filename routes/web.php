@@ -38,6 +38,10 @@ Route::get('alta/{id}', [UsuariosController::class,'alta']);
 Route::get('crear', [UsuariosController::class, 'crear']);
 // Ruta para añadir restaurante
 Route::post('crearRestaurante', [UsuariosController::class, 'crearRestaurante']);
+// Ruta para añadir mg a un restaurante en concreto
+Route::post('mg/{id_restaurante}', [UsuariosController::class, 'mg']);
+// Ruta para eliminar mg a un restaurante en concreto
+Route::post('deleteMg/{id_restaurante}', [UsuariosController::class, 'deleteMg']);
 
 ///////////////////////////////
 //////// LoginRegister ////////

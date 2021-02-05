@@ -44,7 +44,8 @@
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-6 d-flex">
-                <input type="hidden" value="{{Session::get('usuario')->rol}}" id="rol"> 
+                <input type="hidden" value="{{Session::get('usuario')->rol}}" id="rol">
+                <input type="hidden" value="{{Session::get('usuario')->id_usuario}}" id="id_usuario"> 
                 <div class="panel m-auto">
                     <div class="container-fluid form-group p-1">
                         <label for="searchCocina" class="m-0 ml-2">Tipo comida</label><br>
